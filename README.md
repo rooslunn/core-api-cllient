@@ -3,7 +3,7 @@ Pilulka Core Api client
 
 *DEV server*: https://globalapi3.docs.apiary.io/
 
-## Packages dependencies
+## Package dependencies
 
 **PROD**
 
