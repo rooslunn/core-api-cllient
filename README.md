@@ -3,9 +3,13 @@ Pilulka Core Api client
 
 *DEV server*: https://globalapi3.docs.apiary.io/
 
-## PROD
-guzzle
+## Packages dependencies
 
-## DEV
-phpunit
-(mockery)
+**PROD**
+
+* guzzle
+
+**DEV**
+
+* phpunit
+* (mockery)
