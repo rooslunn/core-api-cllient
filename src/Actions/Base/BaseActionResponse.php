@@ -1,0 +1,36 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: russ
+ * Date: 16/05/18
+ * Time: 15:04
+ */
+
+namespace Pilulka\CoreApi\Client\Actions\Base;
+
+
+use GuzzleHttp\Psr7\Response as Psr7Response;
+use Pilulka\CoreApi\Client\Contracts\ApiResponse;
+
+class BaseActionResponse implements ApiResponse
+{
+
+    protected $psr7Response;
+
+    public static function fromPsr7(Psr7Response $psr7Response): ApiResponse
+    {
+        $response = new self();
+        $response->psr7Response = $psr7Response;
+        return $response;
+    }
+
+    public function getStatusCode(): int
+    {
+        return $this->psr7Response->getStatusCode();
+    }
+
+    public function getJson(): string
+    {
+        return $this->psr7Response->getBody;
+    }
+}
