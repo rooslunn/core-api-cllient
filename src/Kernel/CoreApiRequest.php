@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: russ
- * Date: 16/05/18
- * Time: 13:40
- */
 
 namespace Pilulka\CoreApi\Client\Kernel;
 
