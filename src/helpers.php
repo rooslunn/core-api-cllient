@@ -16,3 +16,21 @@ if (! function_exists('config')) {
         return $default;
     }
 }
+
+if (! function_exists('action_url')) {
+    function action_url(string $action) {
+        return config('core-api-base-mock').config($action, 'action');
+    }
+}
+
+if (! function_exists('propagate_params')) {
+    function propagate_params(string $url, array $params) {
+        foreach ($params as $name => $value) {
+            $param_template = "{{$name}}";
+            if (! strpos($url, $param_template) === false) {
+                $url = str_ireplace($param_template, $value, $url);
+            }
+        }
+        return $url;
+    }
+}

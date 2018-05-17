@@ -4,14 +4,11 @@ namespace Pilulka\CoreApi\Client\Action\Base;
 
 
 use Pilulka\CoreApi\Client\Kernel\CoreApiRequest;
-use Pilulka\CoreApi\Client\Contract\{
-    ActionRequest, ApiAction, ApiResponse
-};
+use Pilulka\CoreApi\Client\Contract\{ActionRequest, ApiResponse};
 
-class BaseAction implements ApiAction
+class BaseAction
 {
-
-    public function execute(ActionRequest $request): ApiResponse
+    public function send(ActionRequest $request): ApiResponse
     {
         $response = CoreApiRequest::send($request);
         return BaseActionResponse::fromPsr7($response);

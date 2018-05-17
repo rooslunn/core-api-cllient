@@ -9,14 +9,17 @@ class BaseActionRequest implements ActionRequest
 {
     protected $verb;
 
-    protected $uri;
+    protected $action;
 
     protected $headers;
 
-    public function __construct(string $verb, string $uri, array $headers = [])
+    protected $params;
+
+    public function __construct(string $verb, string $action, array $params = [], array $headers = [])
     {
         $this->verb = $verb;
-        $this->uri = $uri;
+        $this->action = $action;
+        $this->params = $params;
         $this->headers = $headers;
     }
 
@@ -27,11 +30,18 @@ class BaseActionRequest implements ActionRequest
 
     public function getUri(): string
     {
-        return $this->uri;
+        $action_url = action_url($this->action);
+        $action_url = propagate_params($action_url, $this->params);
+        return $action_url;
     }
 
     public function getHeaders(): array
     {
         return $this->headers;
+    }
+
+    public function getParams()
+    {
+        return $this->params;
     }
 }

@@ -4,5 +4,5 @@ namespace Pilulka\CoreApi\Client\Contract;
 
 interface ApiAction
 {
-    public function execute(ActionRequest $request): ApiResponse;
+    public function execute(array $params): ApiResponse;
 }
