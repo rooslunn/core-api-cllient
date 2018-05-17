@@ -1,27 +1,41 @@
 {
     "name": "pilulka/core-api-client",
     "description": "Facade for core-api",
-    "type": "project",
+    "type": "package",
     "authors": [
         {
             "name": "Ruslan Kladko",
-            "email": "rkladko@gmail.com"
+            "email": "rkladko@gmail.com",
+            "role": "Developer"
         }
     ],
     "require": {
+        "php": "^7.1",
         "guzzlehttp/guzzle": "~6.0"
     },
     "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
         "psr-4": {
             "Pilulka\\CoreApi\\Client\\": "src/"
         }
     },
     "autoload-dev": {
+        "files": [
+            "src/helpers.php"
+        ],
         "psr-4": {
             "Pilulka\\CoreApi\\Client\\Tests\\": "tests/"
         }
     },
     "require-dev": {
-        "codeception/codeception": "^2.4"
+        "codeception/codeception": "^2.4",
+        "codeception/specify": "^1.1"
+    },
+    "scripts": {
+        "cept": "vendor/bin/codecept run",
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
     }
 }
