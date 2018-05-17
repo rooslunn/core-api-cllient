@@ -1,10 +1,8 @@
 <?php
 namespace Actions\Manufacturer;
 
-use Pilulka\CoreApi\Client\Action\Manufacturer\View\{
-    ManufacturerViewRequest as ManufacturerViewRequest,
-    ManufacturerViewAction as ManufacturerViewAction
-};
+use function Pilulka\CoreApi\Client\Helpers\action;
+use Pilulka\CoreApi\Client\Action\Manufacturer\View\ManufacturerViewAction;
 
 class ManufacturerViewActionTest extends \Codeception\Test\Unit
 {
@@ -24,7 +22,7 @@ class ManufacturerViewActionTest extends \Codeception\Test\Unit
     // tests
     public function testAction()
     {
-        $response = (new ManufacturerViewAction())->execute(['id' => '1']);
+        $response = action(ManufacturerViewAction::class, ['id' => '1']);
         $this->assertEquals(200, $response->getStatusCode());
     }
 }

@@ -38,3 +38,13 @@ if (!\function_exists('propagate_params')) {
         return $url;
     }
 }
+
+if (!\function_exists('action')) {
+    function action(string $actionClass, array $params) {
+        if (!\class_exists($actionClass)) {
+            return false;
+        }
+        $action = new $actionClass;
+        return $action($params);
+    }
+}
