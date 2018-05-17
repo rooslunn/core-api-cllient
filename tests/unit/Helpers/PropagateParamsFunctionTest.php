@@ -1,5 +1,6 @@
 <?php
-namespace Helpers;
+
+use function Pilulka\CoreApi\Client\Helpers\propagate_params;
 
 class PropagateParamsFunctionTest extends \Codeception\Test\Unit
 {

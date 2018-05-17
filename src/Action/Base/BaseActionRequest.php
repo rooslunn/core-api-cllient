@@ -4,6 +4,8 @@ namespace Pilulka\CoreApi\Client\Action\Base;
 
 
 use Pilulka\CoreApi\Client\Contract\ActionRequest;
+use function Pilulka\CoreApi\Client\Helpers\action_url;
+use function Pilulka\CoreApi\Client\Helpers\propagate_params;
 
 class BaseActionRequest implements ActionRequest
 {

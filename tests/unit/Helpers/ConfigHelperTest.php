@@ -1,5 +1,7 @@
 <?php
 
+use function Pilulka\CoreApi\Client\Helpers\config;
+
 class ConfigHelperTest extends \Codeception\Test\Unit
 {
     use \Codeception\Specify;
