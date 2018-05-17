@@ -6,7 +6,7 @@
  * Time: 14:20
  */
 
-namespace Pilulka\CoreApi\Client\Contracts;
+namespace Pilulka\CoreApi\Client\Contract;
 
 
 interface ApiAction

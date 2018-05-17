@@ -11,7 +11,7 @@ namespace Pilulka\CoreApi\Client\Kernel;
 use GuzzleHttp\{
     Psr7\Request, Psr7\Response, Client
 };
-use Pilulka\CoreApi\Client\Contracts\ActionRequest;
+use Pilulka\CoreApi\Client\Contract\ActionRequest;
 
 class CoreApiRequest
 {

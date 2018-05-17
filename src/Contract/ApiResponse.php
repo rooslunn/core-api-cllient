@@ -6,7 +6,7 @@
  * Time: 14:22
  */
 
-namespace Pilulka\CoreApi\Client\Contracts;
+namespace Pilulka\CoreApi\Client\Contract;
 
 use GuzzleHttp\Psr7\Response;
 

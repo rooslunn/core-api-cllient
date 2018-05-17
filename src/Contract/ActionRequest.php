@@ -6,7 +6,7 @@
  * Time: 14:35
  */
 
-namespace Pilulka\CoreApi\Client\Contracts;
+namespace Pilulka\CoreApi\Client\Contract;
 
 
 interface ActionRequest

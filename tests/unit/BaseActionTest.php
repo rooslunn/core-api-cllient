@@ -1,6 +1,6 @@
 <?php
 
-use Pilulka\CoreApi\Client\Actions\Base\{
+use Pilulka\CoreApi\Client\Action\Base\{
     BaseAction, BaseActionRequest
 };
 

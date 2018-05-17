@@ -6,10 +6,10 @@
  * Time: 14:37
  */
 
-namespace Pilulka\CoreApi\Client\Actions\Base;
+namespace Pilulka\CoreApi\Client\Action\Base;
 
 
-use Pilulka\CoreApi\Client\Contracts\ActionRequest;
+use Pilulka\CoreApi\Client\Contract\ActionRequest;
 
 class BaseActionRequest implements ActionRequest
 {

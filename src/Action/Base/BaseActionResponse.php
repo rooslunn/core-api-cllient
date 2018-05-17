@@ -6,11 +6,11 @@
  * Time: 15:04
  */
 
-namespace Pilulka\CoreApi\Client\Actions\Base;
+namespace Pilulka\CoreApi\Client\Action\Base;
 
 
 use GuzzleHttp\Psr7\Response as Psr7Response;
-use Pilulka\CoreApi\Client\Contracts\ApiResponse;
+use Pilulka\CoreApi\Client\Contract\ApiResponse;
 
 class BaseActionResponse implements ApiResponse
 {

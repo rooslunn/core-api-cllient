@@ -6,11 +6,11 @@
  * Time: 14:32
  */
 
-namespace Pilulka\CoreApi\Client\Actions\Base;
+namespace Pilulka\CoreApi\Client\Action\Base;
 
 
 use Pilulka\CoreApi\Client\Kernel\CoreApiRequest;
-use Pilulka\CoreApi\Client\Contracts\{
+use Pilulka\CoreApi\Client\Contract\{
     ActionRequest, ApiAction, ApiResponse
 };
 
