@@ -1,7 +1,9 @@
 {
     "name": "pilulka/core-api-client",
-    "description": "Facade for core-api",
-    "type": "package",
+    "description": "Facade for core-api actions",
+    "homepage": "https://www.pilulka.cz",
+    "type": "library",
+    "license": "proprietary",
     "authors": [
         {
             "name": "Ruslan Kladko",
