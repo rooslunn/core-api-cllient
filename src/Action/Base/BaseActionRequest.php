@@ -17,6 +17,8 @@ class BaseActionRequest implements ActionRequest
 
     protected $params;
 
+    protected $body;
+
     public function __construct(string $verb, string $action, array $params = [], array $headers = [])
     {
         $this->verb = $verb;
@@ -45,5 +47,18 @@ class BaseActionRequest implements ActionRequest
     public function getParams()
     {
         return $this->params;
+    }
+
+    public function getBody(): string
+    {
+        return $this->body ?? '';
+    }
+
+    /**
+     * @param mixed $body
+     */
+    public function setBody($body): void
+    {
+        $this->body = $body;
     }
 }

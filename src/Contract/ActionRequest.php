@@ -10,4 +10,6 @@ interface ActionRequest
     public function getUri(): string;
 
     public function getHeaders(): array;
+
+    public function getBody(): string;
 }

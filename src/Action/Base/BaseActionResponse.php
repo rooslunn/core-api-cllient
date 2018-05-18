@@ -25,6 +25,6 @@ class BaseActionResponse implements ApiResponse
 
     public function getJson(): string
     {
-        return $this->psr7Response->getBody;
+        return $this->psr7Response->getBody();
     }
 }

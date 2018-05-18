@@ -15,7 +15,8 @@ class CoreApiRequest
         $request = new Request(
             $request->getVerb(),
             $request->getUri(),
-            $request->getHeaders());
+            $request->getHeaders(),
+            $request->getBody());
         $response = $client->send($request);
         return $response;
     }

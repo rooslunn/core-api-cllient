@@ -39,8 +39,8 @@ if (!\function_exists('propagate_params')) {
     }
 }
 
-if (!\function_exists('action')) {
-    function action(string $actionClass, array $params) {
+if (!\function_exists('core_api_action')) {
+    function core_api_action(string $actionClass, array $params) {
         if (!\class_exists($actionClass)) {
             return false;
         }
