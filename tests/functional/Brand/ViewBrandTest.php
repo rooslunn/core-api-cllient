@@ -26,7 +26,7 @@ class ViewBrandTest extends \Codeception\Test\Unit
               ])
             );
 
-        $this->assertArrayHasKey('id', $response, 1);
+        $this->assertArrayHasKey('id', $response, "doesn't have id key");
     }
 
 }

@@ -7,7 +7,7 @@ use Pilulka\CoreApiClient\Request\Request;
 
 class ViewBrand implements Request
 {
-    const url = "http://private-b6694f-globalapi3.apiary-mock.com/brand";
+    private const url = '/brand';
 
     /** @var array */
     private $parameter;
@@ -36,7 +36,7 @@ class ViewBrand implements Request
      */
     public function getUrl(): string
     {
-        return self::url.'/'.$this->parameter['id'];
+        return Http::URL_BASE.self::url.'/'.$this->parameter['id'];
     }
 
     /**
