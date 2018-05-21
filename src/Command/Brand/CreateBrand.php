@@ -1,42 +1,36 @@
 <?php
 
+
 namespace Pilulka\CoreApiClient\Command\Brand;
 
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
 
-class ViewBrand implements Request
+class CreateBrand implements Request
 {
     private const url = '/brand';
 
     /** @var array */
-    private $parameter;
+    private $parameters;
 
-    /**
-     * GetBrand constructor.
-     * @param array $parameter
-     */
-    public function __construct(array $parameter)
+    public function __construct(array $parameters)
     {
-        $this->parameter = $parameter;
+        $this->parameters = $parameters;
     }
-
-
     /**
      * @return string
      */
     public function getMethod(): string
     {
-        return Http::GET;
+        return Http::PUT;
     }
-
 
     /**
      * @return string
      */
     public function getUrl(): string
     {
-        return Http::URL_BASE.self::url.'/'.$this->parameter['id'];
+        return Http::URL_BASE.self::url;
     }
 
     /**
@@ -44,7 +38,7 @@ class ViewBrand implements Request
      */
     public function getParameters(): array
     {
-        return [];
+        return $this->parameters;
     }
 
     /**
@@ -52,6 +46,6 @@ class ViewBrand implements Request
      */
     public function getBody(): string
     {
-        return '';
+        return \GuzzleHttp\json_encode($this->parameters);
     }
 }

@@ -66,7 +66,7 @@ class JsonApiClient
             $request->getMethod(),
             $request->getUrl(),
             [],
-            null
+            $request->getBody()
         );
     }
 

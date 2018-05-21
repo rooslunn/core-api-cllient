@@ -1,6 +1,6 @@
 suites:
-    unit:
-        path: .
+    functional:
+        path: functional
 
 settings:
     shuffle: true

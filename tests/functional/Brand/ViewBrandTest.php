@@ -1,5 +1,7 @@
 <?php
 
+namespace Brand;
+
 use Pilulka\CoreApiClient\Command\Brand\ViewBrand;
 use Pilulka\CoreApiClient\JsonApiClient;
 
