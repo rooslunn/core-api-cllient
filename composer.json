@@ -12,21 +12,15 @@
         }
     ],
     "require": {
-        "php": "^7.1",
         "guzzlehttp/guzzle": "~6.0"
     },
     "autoload": {
-        "files": [
-            "src/helpers.php"
-        ],
         "psr-4": {
-            "Pilulka\\CoreApi\\Client\\": "src/"
+            "Pilulka\\CoreApiClient\\": "src/"
         }
     },
     "autoload-dev": {
-        "files": [
-            "src/helpers.php"
-        ],
+        "files": ["tests/_bootstrap.php"],
         "psr-4": {
             "Pilulka\\CoreApi\\Client\\Tests\\": "tests/"
         }
