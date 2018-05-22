@@ -3,7 +3,6 @@ suites:
         path: unit
     functional:
         path: functional
-
 settings:
     shuffle: true
     lint: true
@@ -11,5 +10,4 @@ paths:
     tests: tests
     output: tests/_output
     support: tests/_support
-    data: tests
-     
+    data: tests/_data

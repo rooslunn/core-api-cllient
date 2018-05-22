@@ -36,7 +36,7 @@ class ViewBrand implements Request
      */
     public function getUrl(): string
     {
-        return Http::URL_BASE.self::url.'/'.$this->parameter['id'];
+        return self::url.'/'.$this->parameter['id'];
     }
 
     /**

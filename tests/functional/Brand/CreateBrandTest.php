@@ -19,7 +19,7 @@ class CreateBrandTest extends \Codeception\Test\Unit
     // tests
     public function testCreateBrand()
     {
-        $response = (new JsonApiClient())
+        $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(
                 new CreateBrand([
                     'id' => 1,

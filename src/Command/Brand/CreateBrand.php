@@ -30,7 +30,7 @@ class CreateBrand implements Request
      */
     public function getUrl(): string
     {
-        return Http::URL_BASE.self::url;
+        return self::url;
     }
 
     /**

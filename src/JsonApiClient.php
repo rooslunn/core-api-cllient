@@ -15,6 +15,13 @@ use Psr\Http\Message\ResponseInterface;
 
 class JsonApiClient
 {
+    /** @var string */
+    private $urlBase;
+
+    public function __construct(string $urlBase)
+    {
+        $this->urlBase = $urlBase;
+    }
 
     /**
      * @param Request $request
@@ -56,6 +63,11 @@ class JsonApiClient
         }
     }
 
+    private function getFullUrl(string $uri): string
+    {
+        return $this->urlBase . $uri;
+    }
+
     /**
      * @param Request $request
      * @return \GuzzleHttp\Psr7\Request
@@ -64,7 +76,7 @@ class JsonApiClient
     {
         return new \GuzzleHttp\Psr7\Request(
             $request->getMethod(),
-            $request->getUrl(),
+            $this->getFullUrl($request->getUrl()),
             [],
             $request->getBody()
         );

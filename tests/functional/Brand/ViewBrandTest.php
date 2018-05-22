@@ -17,11 +17,11 @@ class ViewBrandTest extends \Codeception\Test\Unit
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     public function testViewBrand()
     {
-        $response = (new JsonApiClient())
+        $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(
               new ViewBrand([
                   'id' => 1
