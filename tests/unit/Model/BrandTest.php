@@ -1,7 +1,7 @@
 <?php
 namespace Model;
 
-use Pilulka\CoreApiClient\Model\Brand;
+use Pilulka\CoreApiClient\Model\Card;
 
 class BrandTest extends \Codeception\Test\Unit
 {
@@ -17,7 +17,7 @@ class BrandTest extends \Codeception\Test\Unit
     // tests
     public function testBrandModel(): void
     {
-        $brand = new Brand([
+        $brand = new Card([
             'id' => 1,
             'name' => 'BrandTest',
         ]);

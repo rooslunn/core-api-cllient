@@ -27,6 +27,6 @@ class CreateBrandTest extends \Codeception\Test\Unit
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new CreateBrand($newBrand));
 
-        $this->assertEquals(1, $newBrand->id);
+        $this->assertTrue($response->result);
     }
 }
