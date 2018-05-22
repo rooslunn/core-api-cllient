@@ -4,6 +4,7 @@
 namespace Pilulka\CoreApiClient\Command\Brand;
 
 
+use Pilulka\CoreApiClient\Model\{JsonModel, Brand};
 use Pilulka\CoreApiClient\Response\Response;
 
 class ViewBrandResponse implements Response
@@ -31,5 +32,13 @@ class ViewBrandResponse implements Response
         return [
             'id' => $this->arrayResult['id']
         ];
+    }
+
+    /**
+     * @return JsonModel
+     */
+    public function toModel(): JsonModel
+    {
+        return new Brand($this->arrayResult);
     }
 }

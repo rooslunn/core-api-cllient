@@ -4,6 +4,8 @@
 namespace Pilulka\CoreApiClient\Response;
 
 
+use Pilulka\CoreApiClient\Model\JsonModel;
+
 interface Response
 {
     /**
@@ -15,4 +17,9 @@ interface Response
      * @return array
      */
     public function toArray(): array;
+
+    /**
+     * @return JsonModel
+     */
+    public function toModel(): JsonModel;
 }

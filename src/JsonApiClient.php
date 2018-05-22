@@ -6,6 +6,7 @@ namespace Pilulka\CoreApiClient;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Pilulka\CoreApiClient\Exception\HttpException;
+use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
 use Pilulka\CoreApiClient\Response\Response;
@@ -28,9 +29,9 @@ class JsonApiClient
      * @return array
      * @throws \Exception
      */
-    public function send(Request $request): array
+    public function send(Request $request): JsonModel
     {
-        return $this->sendRequest($request)->toArray();
+        return $this->sendRequest($request)->toModel();
     }
 
     /**

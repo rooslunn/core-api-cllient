@@ -4,7 +4,9 @@
 namespace Pilulka\CoreApiClient\Command\Brand;
 
 
+use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
+use Pilulka\CoreApiClient\Model\Brand;
 
 class CreateBrandResponse implements Response
 {
@@ -29,5 +31,13 @@ class CreateBrandResponse implements Response
     public function toArray(): array
     {
         return $this->arrayResult;
+    }
+
+    /**
+     * @return JsonModel
+     */
+    public function toModel(): JsonModel
+    {
+        return new Brand($this->arrayResult);
     }
 }
