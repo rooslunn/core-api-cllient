@@ -1,4 +1,6 @@
 suites:
+    unit:
+        path: unit
     functional:
         path: functional
 
