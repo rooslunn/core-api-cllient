@@ -15,11 +15,6 @@ interface Request
     public function getUrl(): string;
 
     /**
-     * @return array
-     */
-    public function getParameters(): array;
-
-    /**
      * @return string
      */
     public function getBody(): string;

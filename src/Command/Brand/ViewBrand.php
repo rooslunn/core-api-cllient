@@ -10,15 +10,15 @@ class ViewBrand implements Request
     private const url = '/brand';
 
     /** @var array */
-    private $parameter;
+    private $id;
 
     /**
      * GetBrand constructor.
      * @param array $parameter
      */
-    public function __construct(array $parameter)
+    public function __construct(int $id)
     {
-        $this->parameter = $parameter;
+        $this->id = $id;
     }
 
 
@@ -36,7 +36,7 @@ class ViewBrand implements Request
      */
     public function getUrl(): string
     {
-        return self::url.'/'.$this->parameter['id'];
+        return self::url . '/' . $this->id;
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Brand;
 
 use Pilulka\CoreApiClient\Command\Brand\CreateBrand;
 use Pilulka\CoreApiClient\JsonApiClient;
+use Pilulka\CoreApiClient\Model\Brand;
 
 class CreateBrandTest extends \Codeception\Test\Unit
 {
@@ -19,13 +20,12 @@ class CreateBrandTest extends \Codeception\Test\Unit
     // tests
     public function testCreateBrand()
     {
+        $newBrand = new Brand([
+            'id' => 1,
+            'name' => 'Test Brand',
+        ]);
         $response = (new JsonApiClient(CORE_API_URL_BASE))
-            ->send(
-                new CreateBrand([
-                    'id' => 1,
-                    'name' => 'Test Brand',
-                ])
-            );
+            ->send(new CreateBrand($newBrand));
 
         $this->assertArrayHasKey('result', $response);
         $this->assertTrue($response['result']);

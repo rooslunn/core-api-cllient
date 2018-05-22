@@ -22,11 +22,7 @@ class ViewBrandTest extends \Codeception\Test\Unit
     public function testViewBrand()
     {
         $response = (new JsonApiClient(CORE_API_URL_BASE))
-            ->send(
-              new ViewBrand([
-                  'id' => 1
-              ])
-            );
+            ->send(new ViewBrand(1));
 
         $this->assertArrayHasKey('id', $response, "doesn't have id key");
     }
