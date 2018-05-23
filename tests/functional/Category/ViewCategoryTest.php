@@ -19,7 +19,9 @@ class ViewCategoryTest extends \Codeception\Test\Unit
     {
     }
 
-    // tests
+    /*
+     * @group Category
+     */
     public function testViewCategory()
     {
         $category = (new JsonApiClient(CORE_API_URL_BASE))

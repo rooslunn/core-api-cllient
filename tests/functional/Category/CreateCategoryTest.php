@@ -18,7 +18,9 @@ class CreateCategoryTest extends \Codeception\Test\Unit
     {
     }
 
-    // tests
+    /*
+     * @group Category
+     */
     public function testCreateCategory()
     {
         $category = new Category([
