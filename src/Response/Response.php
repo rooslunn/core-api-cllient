@@ -15,4 +15,9 @@ interface Response
      * @return array
      */
     public function toArray(): array;
+
+    /**
+     * @return JsonModel
+     */
+    public function toModel();
 }

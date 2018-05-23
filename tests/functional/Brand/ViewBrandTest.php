@@ -1,5 +1,7 @@
 <?php
 
+namespace Brand;
+
 use Pilulka\CoreApiClient\Command\Brand\ViewBrand;
 use Pilulka\CoreApiClient\JsonApiClient;
 
@@ -15,18 +17,14 @@ class ViewBrandTest extends \Codeception\Test\Unit
     }
 
     /**
-     * @throws Exception
+     * @throws \Exception
      */
     public function testViewBrand()
     {
-        $response = (new JsonApiClient())
-            ->send(
-              new ViewBrand([
-                  'id' => 1
-              ])
-            );
+        $brand = (new JsonApiClient(CORE_API_URL_BASE))
+            ->send(new ViewBrand(1));
 
-        $this->assertArrayHasKey('id', $response, 1);
+        $this->assertEquals(1, $brand->id);
     }
 
 }

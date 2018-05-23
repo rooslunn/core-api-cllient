@@ -2,14 +2,14 @@
 
 namespace Pilulka\CoreApiClient\Request;
 
-class Http
+class http
 {
-    const GET = 'GET';
-    const POST = 'POST';
-    const PUT = 'PUT';
-    const DELETE = 'DELETE';
+    public const GET = 'get';
+    public const POST = 'post';
+    public const PUT = 'put';
+    public const DELETE = 'delete';
 
-    const CODE_200 = 200;
-    const CODE_404 = 404;
-    const CODE_500 = 500;
+    public const CODE_200 = 200;
+    public const CODE_404 = 404;
+    public const CODE_500 = 500;
 }

@@ -1,13 +1,12 @@
 <?php
 
 
-namespace Pilulka\CoreApiClient\Command\Brand;
+namespace Pilulka\CoreApiClient\Command\CardTransaction;
 
-
-use Pilulka\CoreApiClient\Model\Brand;
+use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
 
-class ViewBrandResponse implements Response
+class CreateCardTransactionResponse implements Response
 {
     /**
      * @var array
@@ -21,7 +20,7 @@ class ViewBrandResponse implements Response
 
     public function result(): bool
     {
-        return $this->arrayResult['id'] ? true : false;
+        return $this->arrayResult['result'] ?? false;
     }
 
     /**
@@ -29,16 +28,14 @@ class ViewBrandResponse implements Response
      */
     public function toArray(): array
     {
-        return [
-            'id' => $this->arrayResult['id']
-        ];
+        return $this->arrayResult;
     }
 
     /**
-     * @return Brand
+     * @return JsonModel
      */
-    public function toModel(): Brand
+    public function toModel(): JsonModel
     {
-        return new Brand($this->arrayResult);
+        return new JsonModel($this->arrayResult);
     }
 }

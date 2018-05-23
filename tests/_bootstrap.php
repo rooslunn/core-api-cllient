@@ -3,3 +3,5 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 
+define('CORE_API_URL_BASE', 'https://private-ffc5e-globalapi3.apiary-mock.com');
+

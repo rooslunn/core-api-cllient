@@ -6,6 +6,7 @@ namespace Pilulka\CoreApiClient;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Pilulka\CoreApiClient\Exception\HttpException;
+use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
 use Pilulka\CoreApiClient\Response\Response;
@@ -15,15 +16,22 @@ use Psr\Http\Message\ResponseInterface;
 
 class JsonApiClient
 {
+    /** @var string */
+    private $urlBase;
+
+    public function __construct(string $urlBase)
+    {
+        $this->urlBase = $urlBase;
+    }
 
     /**
      * @param Request $request
      * @return array
      * @throws \Exception
      */
-    public function send(Request $request): array
+    public function send(Request $request)
     {
-        return $this->sendRequest($request)->toArray();
+        return $this->sendRequest($request)->toModel();
     }
 
     /**
@@ -56,6 +64,11 @@ class JsonApiClient
         }
     }
 
+    private function getFullUrl(string $uri): string
+    {
+        return $this->urlBase . $uri;
+    }
+
     /**
      * @param Request $request
      * @return \GuzzleHttp\Psr7\Request
@@ -64,9 +77,9 @@ class JsonApiClient
     {
         return new \GuzzleHttp\Psr7\Request(
             $request->getMethod(),
-            $request->getUrl(),
+            $this->getFullUrl($request->getUrl()),
             [],
-            null
+            $request->getBody()
         );
     }
 

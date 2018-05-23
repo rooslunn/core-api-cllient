@@ -1,24 +1,24 @@
 <?php
 
-namespace Pilulka\CoreApiClient\Command\Brand;
+namespace Pilulka\CoreApiClient\Command\CardTransaction;
 
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
 
-class ViewBrand implements Request
+class ViewCardTransaction implements Request
 {
-    private const url = '/brand';
+    private const url = '/card/transaction';
 
-    /** @var array */
-    private $id;
+    /** @var int */
+    private $userId;
 
     /**
      * GetBrand constructor.
-     * @param array $parameter
+     * @param int $userId
      */
-    public function __construct(int $id)
+    public function __construct(int $userId)
     {
-        $this->id = $id;
+        $this->userId = $userId;
     }
 
 
@@ -36,15 +36,7 @@ class ViewBrand implements Request
      */
     public function getUrl(): string
     {
-        return self::url . '/' . $this->id;
-    }
-
-    /**
-     * @return array
-     */
-    public function getParameters(): array
-    {
-        return [];
+        return self::url . '/' . $this->userId;
     }
 
     /**
