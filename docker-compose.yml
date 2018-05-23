@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+
+  php:
+    build: docker/php-fpm
+    volumes:
+      - ~/.ssh:/root/.ssh
+      - ~/.composer:/root/.composer
+      - .:/home/docker/eshop
+      - ./php-fpm/php-ini-overrides.ini:/etc/php/7.1/fpm/conf.d/99-overrides.ini
+      - ./php-fpm/xdebug.ini:/etc/php/7.1/mods-available/xdebug.ini
+      - ./php-fpm/supervisor:/etc/supervisor
+      - ./php-fpm/cron.conf:/etc/cron.conf
+      - ./php-fpm/logs:/var/log
+    environment:
+      XDEBUG_CONFIG: 'remote_enable=0'
+    networks:
+      - core-api-client
+
+networks:
+  core-api-client:
+    driver: bridge
