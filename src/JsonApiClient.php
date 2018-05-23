@@ -26,7 +26,7 @@ class JsonApiClient
 
     /**
      * @param Request $request
-     * @return array
+     * @return \JsonModel|\JsonModel[]
      * @throws \Exception
      */
     public function send(Request $request)

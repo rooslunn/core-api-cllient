@@ -22,7 +22,7 @@ class JsonModel
         return null;
     }
 
-    public function __set(string $attribute, string $value): void
+    public function __set(string $attribute, $value): void
     {
         if (array_key_exists($attribute, $this->attributes)) {
             $this->attributes[$attribute] = $value;
