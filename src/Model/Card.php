@@ -13,7 +13,7 @@ class Card extends JsonModel
     /** @var float */
     private $credits;
 
-    /** @var array  */
+    /** @var ?array  */
     private $cards = [];
 
 }

@@ -29,7 +29,7 @@ class JsonApiClient
      * @return array
      * @throws \Exception
      */
-    public function send(Request $request): JsonModel
+    public function send(Request $request)
     {
         return $this->sendRequest($request)->toModel();
     }

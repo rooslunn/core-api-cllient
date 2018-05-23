@@ -1,13 +1,12 @@
 <?php
 
 
-namespace Pilulka\CoreApiClient\Command\Card;
+namespace Pilulka\CoreApiClient\Command\CardTransaction;
 
-
-use Pilulka\CoreApiClient\Model\Card;
+use Pilulka\CoreApiClient\Model\CardTransaction;
 use Pilulka\CoreApiClient\Response\Response;
 
-class ViewCardResponse implements Response
+class ViewCardTransactionResponse implements Response
 {
     /**
      * @var array
@@ -21,7 +20,7 @@ class ViewCardResponse implements Response
 
     public function result(): bool
     {
-        return $this->arrayResult['userId'] ? true : false;
+        return true;
     }
 
     /**
@@ -33,10 +32,12 @@ class ViewCardResponse implements Response
     }
 
     /**
-     * @return Card
+     * @return CardTransaction[]
      */
-    public function toModel(): Card
+    public function toModel(): array
     {
-        return new Card($this->arrayResult);
+        return array_map(function ($item) {
+            return new CardTransaction($item);
+        }, $this->arrayResult);
     }
 }
