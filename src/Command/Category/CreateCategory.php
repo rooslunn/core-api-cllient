@@ -2,7 +2,7 @@
 
 namespace Pilulka\CoreApiClient\Command\Category;
 
-use Pilulka\CoreApiClient\Model\Category;
+use Pilulka\CoreApiClient\Model\Category\Category;
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
 
@@ -44,7 +44,19 @@ class CreateCategory implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode([
-        ]);
+        $category = $this->category;
+        $arrForJson = [
+            'id' => $category->id,
+            'name' => $category->name,
+            'parentId' => $category->parentId,
+            'position' => $category->position,
+            'content' => $category->content,
+            'isActive' => $category->isActive,
+            'isDeleted' => $category->isDeleted,
+            'image' => $category->image,
+            'inMainMenu' => $category->inMainMenu,
+            'filtes' => $category->filters,
+        ];
+        return \GuzzleHttp\json_encode($arrForJson);
     }
 }

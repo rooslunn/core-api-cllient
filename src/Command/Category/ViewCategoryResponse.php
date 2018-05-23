@@ -47,7 +47,7 @@ class ViewCategoryResponse implements Response
                 return new CategoryFilter($filter);
             }, $category->filters);
         }
-        
+
         return $category;
     }
 }
