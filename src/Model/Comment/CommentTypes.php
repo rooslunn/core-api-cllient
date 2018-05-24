@@ -1,8 +1,6 @@
 <?php
 
-
-namespace Pilulka\Shop\Domain\Model\Comment;
-
+namespace Pilulka\CoreApiClient\Model\Comment;
 
 class CommentTypes
 {
