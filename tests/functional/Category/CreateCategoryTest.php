@@ -1,4 +1,5 @@
 <?php
+
 namespace Category;
 
 use Pilulka\CoreApiClient\Command\Category\CreateCategory;
