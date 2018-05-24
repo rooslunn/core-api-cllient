@@ -4,7 +4,7 @@ namespace Comment;
 
 use Pilulka\CoreApiClient\Command\Comment\CreateComment;
 use Pilulka\CoreApiClient\JsonApiClient;
-use Pilulka\CoreApiClient\Model\Comment;
+use Pilulka\CoreApiClient\Model\Comment\Comment;
 
 class CreateCommentTest extends \Codeception\Test\Unit
 {

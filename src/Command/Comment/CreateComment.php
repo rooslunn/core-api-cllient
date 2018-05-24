@@ -2,7 +2,7 @@
 
 namespace Pilulka\CoreApiClient\Command\Comment;
 
-use Pilulka\CoreApiClient\Model\Comment;
+use Pilulka\CoreApiClient\Model\Comment\Comment;
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
 
