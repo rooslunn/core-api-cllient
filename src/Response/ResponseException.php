@@ -41,7 +41,7 @@ class ResponseException implements Response
     /**
      * @return JsonModel
      */
-    public function toModel()
+    public function toModel(): JsonModel
     {
         return new JsonModel($this->toArray());
     }

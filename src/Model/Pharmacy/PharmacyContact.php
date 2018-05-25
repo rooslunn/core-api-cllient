@@ -2,7 +2,9 @@
 
 namespace Pilulka\CoreApiClient\Model\Pharmacy;
 
-class PharmacyContact
+use Pilulka\CoreApiClient\Model\JsonModel;
+
+class PharmacyContact extends JsonModel
 {
     /** @var string */
     private $street;

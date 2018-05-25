@@ -24,7 +24,7 @@ function writeTemplate(string $fileName, string $content) {
         p("E: Cannot write to file ($fileName)");
         exit;
     }
-    p("I: Templated wrote ($fileName)");
+    p("I: Template generated ($fileName)");
     fclose($handle);
 }
 
@@ -47,7 +47,7 @@ function readTemplate(string $fileName): string {
 
 function usage() {
     p('Usage:');
-    p('> php tools/alacrity.php model=<Model> action=<Command> method=<HTTP_VERB> uri=<API URI> <create-model> <run-test>');
+    p('> php tools/alacrity.php model=<[Subfolder\]Model> action=<Command> method=<HTTP_VERB> uri=<API URI> <create-model> <run-test>');
 }
 /*
  * Start
@@ -62,12 +62,10 @@ if (! array_key_exists('model', $_GET)
 }
 
 $modelNamespaced = $_GET['model'];
-[$subfolder, $model] = explode('\\', $modelNamespaced);
+[$subfolder, $model] = array_pad(explode('/', $modelNamespaced), 2, null);
 if ($model === null) {
     [$model, $subfolder] = [$subfolder, null];
 }
-echo $modelNamespaced . PHP_EOL;
-exit;
 
 $action = $_GET['action'];
 $command = $action . $model;
@@ -80,6 +78,8 @@ if (array_key_exists('create-model', $_GET)) {
 }
 
 p("Model: $model");
+p("Model Subfolder: $subfolder");
+p("Model Namespace: $modelNamespaced");
 p("Action: $action");
 p("Method: $method");
 p("uri: $uri");
@@ -141,6 +141,7 @@ class {$command} implements Request
     {
         \$this->{$modelVar} = \${$modelVar};
     }
+    
     /**
      * @return string
      */
@@ -178,7 +179,7 @@ shell_exec("touch {$fileName}");
 $fileContent = <<<PHP
 <?php
 
-namespace Pilulka\CoreApiClient\Command\\{$modelNamespaced};
+namespace Pilulka\CoreApiClient\Command\\{$model};
 
 use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;

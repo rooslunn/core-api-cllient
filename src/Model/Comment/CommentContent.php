@@ -3,7 +3,9 @@
 
 namespace Pilulka\Shop\Domain\Model\Comment;
 
-class CommentContent
+use Pilulka\CoreApiClient\Model\JsonModel;
+
+class CommentContent extends JsonModel
 {
     /** @var  string|null */
     private $long;
