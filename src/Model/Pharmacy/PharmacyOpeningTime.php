@@ -2,7 +2,9 @@
 
 namespace Pilulka\CoreApiClient\Model\Pharmacy;
 
-class PharmacyOpeningTime
+use Pilulka\CoreApiClient\Model\JsonModel;
+
+class PharmacyOpeningTime extends JsonModel
 {
     /** @var string */
     private $monday;

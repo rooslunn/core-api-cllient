@@ -2,7 +2,9 @@
 
 namespace Pilulka\CoreApiClient\Model\Pharmacy;
 
-class PharmacyLocation
+use Pilulka\CoreApiClient\Model\JsonModel;
+
+class PharmacyLocation extends JsonModel
 {
     /** @var  float */
     private $lat;

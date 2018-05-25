@@ -2,7 +2,9 @@
 
 namespace Pilulka\CoreApiClient\Model\Pharmacy;
 
-class Pharmacy
+use Pilulka\CoreApiClient\Model\JsonModel;
+
+class Pharmacy extends JsonModel
 {
     /** @var  int */
     private $id;
