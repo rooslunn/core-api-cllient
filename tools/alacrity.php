@@ -11,27 +11,43 @@ function pl() {
     p(str_repeat('-', 14));
 }
 
-function fill(string $fileName, string $content) {
-    if (is_writable($fileName)) {
-        if (! $handle = fopen($fileName, 'w')) {
-            p("E: Cannot open file ($fileName)");
-            exit;
-        }
-        if (fwrite($handle, $content) === false) {
-            p("E: Cannot wirte to file ($fileName)");
-            exit;
-        }
-        p('Done');
-        fclose($handle);
-    } else {
+function writeTemplate(string $fileName, string $content) {
+    if (! is_writable($fileName)) {
         p("E: File is not writeable ($fileName)");
         exit;
     }
+    if (! $handle = fopen($fileName, 'w')) {
+        p("E: Cannot open file ($fileName)");
+        exit;
+    }
+    if (fwrite($handle, $content) === false) {
+        p("E: Cannot write to file ($fileName)");
+        exit;
+    }
+    p("I: Templated wrote ($fileName)");
+    fclose($handle);
+}
+
+function readTemplate(string $fileName): string {
+    if (!file_exists($fileName)) {
+        p("E: File not exists ($fileName)");
+        exit;
+    }
+    if (! $handle = fopen($fileName, 'r')) {
+        p("E: Cannot open file ($fileName)");
+        exit;
+    }
+    if (fread($handle, filesize($fileName)) === false) {
+        p("E: Cannot read file ($fileName)");
+        exit;
+    }
+    p("I: Template read ($fileName)");
+    fclose($handle);
 }
 
 function usage() {
     p('Usage:');
-    p('> php api-create.php model=<Model> action=<Command> method=<HTTP_VERB> uri=<API URI> <no-model> <run-test>');
+    p('> php tools/alacrity.php model=<Model> action=<Command> method=<HTTP_VERB> uri=<API URI> <create-model> <run-test>');
 }
 /*
  * Start
@@ -45,20 +61,22 @@ if (! array_key_exists('model', $_GET)
     exit;
 }
 
-$model = $_GET['model'];
-//[$subfolder, $model] = explode('/', $model);
-//if ($model === null) {
-//    [$model, $subfolder] = [$subfolder, null];
-//}
+$modelNamespaced = $_GET['model'];
+[$subfolder, $model] = explode('\\', $modelNamespaced);
+if ($model === null) {
+    [$model, $subfolder] = [$subfolder, null];
+}
+echo $modelNamespaced . PHP_EOL;
+exit;
 
 $action = $_GET['action'];
 $command = $action . $model;
 $method = $_GET['method'];
 $uri = $_GET['uri'];
 
-$createModel = true;
-if (array_key_exists('no-model', $_GET)) {
-    $createModel = false;
+$createModel = false;
+if (array_key_exists('create-model', $_GET)) {
+    $createModel = true;
 }
 
 p("Model: $model");
@@ -90,7 +108,7 @@ class {$model} extends JsonModel
 PHP;
     $fileName = "src/Model/{$model}.php";
     shell_exec("touch $fileName");
-    fill($fileName, $fileContent);
+    writeTemplate($fileName, $fileContent);
 }
 
 /*
@@ -108,7 +126,7 @@ $fileContent = <<<PHP
 
 namespace Pilulka\CoreApiClient\Command\\{$model};
 
-use Pilulka\CoreApiClient\Model\\{$model};
+use Pilulka\CoreApiClient\Model\\{$modelNamespaced};
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
 
@@ -150,7 +168,7 @@ class {$command} implements Request
     }
 }
 PHP;
-fill($fileName, $fileContent);
+writeTemplate($fileName, $fileContent);
 
 /*
  * Response
@@ -160,7 +178,7 @@ shell_exec("touch {$fileName}");
 $fileContent = <<<PHP
 <?php
 
-namespace Pilulka\CoreApiClient\Command\\{$model};
+namespace Pilulka\CoreApiClient\Command\\{$modelNamespaced};
 
 use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
@@ -201,7 +219,7 @@ class {$command}Response implements Response
 PHP;
 pl();
 p("Creating Response ($fileName)...");
-fill($fileName, $fileContent);
+writeTemplate($fileName, $fileContent);
 
 /*
  * Test
@@ -218,7 +236,7 @@ namespace {$model};
 
 use Pilulka\CoreApiClient\Command\\{$model}\\{$command};
 use Pilulka\CoreApiClient\JsonApiClient;
-use Pilulka\CoreApiClient\Model\\{$model};
+use Pilulka\CoreApiClient\Model\\{$modelNamespaced};
 
 class {$command}Test extends \Codeception\Test\Unit
 {
@@ -248,7 +266,7 @@ class {$command}Test extends \Codeception\Test\Unit
     }
 }
 PHP;
-fill($fileName, $fileContent);
+writeTemplate($fileName, $fileContent);
 
 pl();
 p("Dont`t forget to implement {$command}Response.getBody()");
