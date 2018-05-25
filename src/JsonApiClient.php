@@ -87,7 +87,8 @@ class JsonApiClient
      */
     private function responseArray(ResponseInterface $response): array
     {
-        return \GuzzleHttp\json_decode($response->getBody(), true);
+        $uncommented = JsonArtisan::uncomment((string) $response->getBody());
+        return \GuzzleHttp\json_decode($uncommented, true);
     }
 
     /**
