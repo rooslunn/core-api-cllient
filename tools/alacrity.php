@@ -62,7 +62,7 @@ if (! array_key_exists('model', $_GET)
 }
 
 $modelNamespaced = $_GET['model'];
-[$subfolder, $model] = array_pad(explode('/', $modelNamespaced), 2, null);
+[$subfolder, $model] = array_pad(explode('\\', $modelNamespaced), 2, null);
 if ($model === null) {
     [$model, $subfolder] = [$subfolder, null];
 }
@@ -84,6 +84,7 @@ p("Action: $action");
 p("Method: $method");
 p("uri: $uri");
 p("Command: {$command}");
+//exit;
 
 /*
  * Model

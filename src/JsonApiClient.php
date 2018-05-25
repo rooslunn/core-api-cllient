@@ -6,7 +6,6 @@ namespace Pilulka\CoreApiClient;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Pilulka\CoreApiClient\Exception\HttpException;
-use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
 use Pilulka\CoreApiClient\Response\Response;
