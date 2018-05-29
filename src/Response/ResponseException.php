@@ -30,7 +30,7 @@ class ResponseException implements Response
     /**
      * @return array
      */
-    public function toArray(): array
+    public function toObject(): array
     {
         return [
             'result' => false,
@@ -43,6 +43,6 @@ class ResponseException implements Response
      */
     public function toModel(): JsonModel
     {
-        return new JsonModel($this->toArray());
+        return new JsonModel($this->toObject());
     }
 }

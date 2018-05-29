@@ -1,11 +1,10 @@
 <?php
 
+
 namespace Pilulka\CoreApiClient\Model\Order;
 
 
-use Pilulka\CoreApiClient\Model\JsonModel;
-
-class Order extends JsonModel
+class Order
 {
     const STATUS_FAILED = 91; // Chybná
 
@@ -180,4 +179,545 @@ class Order extends JsonModel
 
     /** @var float */
     private $price;
+
+    /**
+     * @return int|null
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     * @return Order
+     */
+    public function setId(int $id): Order
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getOrderNo(): ?string
+    {
+        return $this->orderNo;
+    }
+
+    /**
+     * @param string $orderNo
+     * @return Order
+     */
+    public function setOrderNo(string $orderNo): Order
+    {
+        $this->orderNo = $orderNo;
+        return $this;
+    }
+
+    /**
+     * @return int|null
+     */
+    public function getUserId(): ?int
+    {
+        return $this->userId;
+    }
+
+    /**
+     * @param int|null $userId
+     * @return Order
+     */
+    public function setUserId($userId): Order
+    {
+        $this->userId = $userId;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatus(): int
+    {
+        return $this->status;
+    }
+
+    /**
+     * @param int $status
+     * @return Order
+     */
+    public function setStatus(int $status): Order
+    {
+        $this->status = $status;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isPaid(): bool
+    {
+        return $this->isPaid;
+    }
+
+    /**
+     * @param bool $isPaid
+     * @return Order
+     */
+    public function setIsPaid(bool $isPaid): Order
+    {
+        $this->isPaid = $isPaid;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getFirstName(): string
+    {
+        return $this->firstName;
+    }
+
+    /**
+     * @param string $firstName
+     * @return Order
+     */
+    public function setFirstName(string $firstName): Order
+    {
+        $this->firstName = $firstName;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getLastName(): string
+    {
+        return $this->lastName;
+    }
+
+    /**
+     * @param string $lastName
+     * @return Order
+     */
+    public function setLastName(string $lastName): Order
+    {
+        $this->lastName = $lastName;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    /**
+     * @param string $email
+     * @return Order
+     */
+    public function setEmail(string $email): Order
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    /**
+     * @param string $phone
+     * @return Order
+     */
+    public function setPhone(string $phone): Order
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getCompany(): ?string
+    {
+        return $this->company;
+    }
+
+    /**
+     * @param string|null $company
+     * @return Order
+     */
+    public function setCompany(?string $company): Order
+    {
+        $this->company = $company;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getIco(): ?string
+    {
+        return $this->ico;
+    }
+
+    /**
+     * @param string|null $ico
+     * @return Order
+     */
+    public function setIco(?string $ico): Order
+    {
+        $this->ico = $ico;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDic(): ?string
+    {
+        return $this->dic;
+    }
+
+    /**
+     * @param string|null $dic
+     * @return Order
+     */
+    public function setDic(?string $dic): Order
+    {
+        $this->dic = $dic;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getStreet(): string
+    {
+        return $this->street;
+    }
+
+    /**
+     * @param string $street
+     * @return Order
+     */
+    public function setStreet(string $street): Order
+    {
+        $this->street = $street;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getCity(): string
+    {
+        return $this->city;
+    }
+
+    /**
+     * @param string $city
+     * @return Order
+     */
+    public function setCity(string $city): Order
+    {
+        $this->city = $city;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getZip(): string
+    {
+        return $this->zip;
+    }
+
+    /**
+     * @param string $zip
+     * @return Order
+     */
+    public function setZip(string $zip): Order
+    {
+        $this->zip = $zip;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDelFirstName(): ?string
+    {
+        return $this->delFirstName;
+    }
+
+    /**
+     * @param string|null $delFirstName
+     * @return Order
+     */
+    public function setDelFirstName(?string $delFirstName): Order
+    {
+        $this->delFirstName = $delFirstName;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDelLastName(): ?string
+    {
+        return $this->delLastName;
+    }
+
+    /**
+     * @param string|null $delLastName
+     * @return Order
+     */
+    public function setDelLastName(?string $delLastName): Order
+    {
+        $this->delLastName = $delLastName;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDelPhone(): ?string
+    {
+        return $this->delPhone;
+    }
+
+    /**
+     * @param string|null $delPhone
+     * @return Order
+     */
+    public function setDelPhone(?string $delPhone): Order
+    {
+        $this->delPhone = $delPhone;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDelCompany(): ?string
+    {
+        return $this->delCompany;
+    }
+
+    /**
+     * @param string|null $delCompany
+     * @return Order
+     */
+    public function setDelCompany(?string $delCompany): Order
+    {
+        $this->delCompany = $delCompany;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDelStreet(): ?string
+    {
+        return $this->delStreet;
+    }
+
+    /**
+     * @param string|null $delStreet
+     * @return Order
+     */
+    public function setDelStreet(?string $delStreet): Order
+    {
+        $this->delStreet = $delStreet;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDelCity(): ?string
+    {
+        return $this->delCity;
+    }
+
+    /**
+     * @param string|null $delCity
+     * @return Order
+     */
+    public function setDelCity(?string $delCity): Order
+    {
+        $this->delCity = $delCity;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getDelZip(): ?string
+    {
+        return $this->delZip;
+    }
+
+    /**
+     * @param string|null $delZip
+     * @return Order
+     */
+    public function setDelZip(?string $delZip): Order
+    {
+        $this->delZip = $delZip;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNote(): ?string
+    {
+        return $this->note;
+    }
+
+    /**
+     * @param string|null $note
+     * @return Order
+     */
+    public function setNote(?string $note): Order
+    {
+        $this->note = $note;
+        return $this;
+    }
+
+    /**
+     * @return string|null
+     */
+    public function getNoteAdmin(): ?string
+    {
+        return $this->noteAdmin;
+    }
+
+    /**
+     * @param string|null $noteAdmin
+     * @return Order
+     */
+    public function setNoteAdmin(?string $noteAdmin): Order
+    {
+        $this->noteAdmin = $noteAdmin;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getCreatedAt(): \DateTime
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * @param \DateTime $createdAt
+     * @return Order
+     */
+    public function setCreatedAt(\DateTime $createdAt): Order
+    {
+        $this->createdAt = $createdAt;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCreatedBy(): int
+    {
+        return $this->createdBy;
+    }
+
+    /**
+     * @param int $createdBy
+     * @return Order
+     */
+    public function setCreatedBy(int $createdBy): Order
+    {
+        $this->createdBy = $createdBy;
+        return $this;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdatedAt(): ?\DateTime
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @param \DateTime $updatedAt
+     * @return Order
+     */
+    public function setUpdatedAt(\DateTime $updatedAt): Order
+    {
+        $this->updatedAt = $updatedAt;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUpdatedBy(): ?int
+    {
+        return $this->updatedBy;
+    }
+
+    /**
+     * @param int|null $updatedBy
+     * @return Order
+     */
+    public function setUpdatedBy($updatedBy): Order
+    {
+        $this->updatedBy = $updatedBy;
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getWarehouseId(): ?int
+    {
+        return $this->warehouseId;
+    }
+
+    /**
+     * @param int|null $warehouseId
+     * @return Order
+     */
+    public function setWarehouseId($warehouseId): Order
+    {
+        $this->warehouseId = $warehouseId;
+        return $this;
+    }
+
+    /**
+     * @return float
+     */
+    public function getPrice(): float
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param float $price
+     * @return Order
+     */
+    public function setPrice(float $price): Order
+    {
+        $this->price = $price;
+        return $this;
+    }
+
 }

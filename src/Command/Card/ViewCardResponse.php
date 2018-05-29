@@ -4,39 +4,34 @@
 namespace Pilulka\CoreApiClient\Command\Card;
 
 
-use Pilulka\CoreApiClient\Model\Card;
+use JsonMapper;
+use Pilulka\CoreApiClient\Model\Card\Card;
 use Pilulka\CoreApiClient\Response\Response;
 
 class ViewCardResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
     {
-        return $this->arrayResult['userId'] ? true : false;
+        return $this->objectResult->userId ? true : false;
     }
 
     /**
-     * @return array
+     * @return object|Card
+     * @throws \JsonMapper_Exception
      */
-    public function toArray(): array
+    public function toModel()
     {
-        return $this->arrayResult;
-    }
-
-    /**
-     * @return Card
-     */
-    public function toModel(): Card
-    {
-        return new Card($this->arrayResult);
+        $mapper = new JsonMapper();
+        return $mapper->map($this->objectResult, new Card());
     }
 }

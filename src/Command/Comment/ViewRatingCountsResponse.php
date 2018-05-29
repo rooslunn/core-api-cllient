@@ -24,7 +24,7 @@ class ViewRatingCountsResponse implements Response
     /**
      * @return array
      */
-    public function toArray(): array
+    public function toObject(): array
     {
         return $this->arrayResult;
     }
@@ -34,6 +34,6 @@ class ViewRatingCountsResponse implements Response
      */
     public function toModel(): array
     {
-        return $this->toArray();
+        return $this->toObject();
     }
 }

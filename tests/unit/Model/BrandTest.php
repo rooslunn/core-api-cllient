@@ -1,7 +1,8 @@
 <?php
 namespace Model;
 
-use Pilulka\CoreApiClient\Model\Brand;
+
+use Pilulka\CoreApiClient\Model\Brand\Brand;
 
 class BrandTest extends \Codeception\Test\Unit
 {

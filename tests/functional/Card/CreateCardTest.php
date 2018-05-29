@@ -2,8 +2,8 @@
 namespace Card;
 
 use Pilulka\CoreApiClient\JsonApiClient;
-use Pilulka\CoreApiClient\Model\Card;
 use Pilulka\CoreApiClient\Command\Card\CreateCard;
+use Pilulka\CoreApiClient\Model\Card\Card;
 
 class CreateCardTest extends \Codeception\Test\Unit
 {
@@ -19,12 +19,13 @@ class CreateCardTest extends \Codeception\Test\Unit
     // tests
     public function testCreateCard(): void
     {
-        $card = new Card([
-            'userId' => 1,
-            'isVip' => true,
-            'credits' => 1000.99,
-            'cards' => ['223322', '322223'],
-        ]);
+        $card = (new Card())->setUserId(1)
+            ->setIsVip(false)
+            ->setCredits(0)
+            ->setCards(
+                ['223322', '322223']
+            );
+
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new CreateCard($card));
 
