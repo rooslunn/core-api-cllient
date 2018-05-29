@@ -6,13 +6,13 @@ use Pilulka\CoreApiClient\Response\Response;
 class ViewSubcategoryIdsResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
@@ -20,19 +20,12 @@ class ViewSubcategoryIdsResponse implements Response
         return true;
     }
 
-    /**
-     * @return array
-     */
-    public function toObject(): array
-    {
-        return $this->arrayResult;
-    }
 
     /**
-     * @return array
+     * @return array|object
      */
-    public function toModel(): array
+    public function toModel()
     {
-        return $this->toObject();
+        return $this->objectResult;
     }
 }

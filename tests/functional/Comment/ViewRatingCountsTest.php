@@ -24,6 +24,6 @@ class ViewRatingCountsTest extends \Codeception\Test\Unit
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new ViewRatingCounts(1, 1));
 
-        $this->assertInternalType('array', $response);
+        $this->assertInternalType('object', $response);
     }
 }

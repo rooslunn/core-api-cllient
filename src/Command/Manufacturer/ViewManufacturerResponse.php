@@ -2,39 +2,34 @@
 
 namespace Pilulka\CoreApiClient\Command\Manufacturer;
 
+use JsonMapper;
 use Pilulka\CoreApiClient\Model\Manufacturer\Manufacturer;
 use Pilulka\CoreApiClient\Response\Response;
 
 class ViewManufacturerResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
     {
-        return $this->arrayResult['id'] ? true : false;
+        return $this->objectResult->id ? true : false;
     }
 
     /**
-     * @return array
+     * @return object|Manufacturer
+     * @throws \JsonMapper_Exception
      */
-    public function toObject(): array
+    public function toModel()
     {
-        return $this->arrayResult;
-    }
-
-    /**
-     * @return Manufacturer
-     */
-    public function toModel(): Manufacturer
-    {
-        return new Manufacturer($this->arrayResult);
+        $mapper = new JsonMapper();
+        return $mapper->map($this->objectResult, new Manufacturer());
     }
 }

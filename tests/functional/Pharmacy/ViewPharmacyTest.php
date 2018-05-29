@@ -19,17 +19,18 @@ class ViewPharmacyTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
-     * @group Pharmacy
+    /**
+     * @throws \Exception
      */
     public function testViewPharmacy(): void
     {
+        /** @var Pharmacy $response */
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new ViewPharmacy($id = 1));
 
         $this->assertInstanceOf(Pharmacy::class, $response);
-        $this->assertInstanceOf(PharmacyOpeningTime::class, $response->openingTime);
-        $this->assertInstanceOf(PharmacyLocation::class, $response->location);
-        $this->assertInstanceOf(PharmacyContact::class, $response->contact);
+        $this->assertInstanceOf(PharmacyOpeningTime::class, $response->getOpeningTime());
+        $this->assertInstanceOf(PharmacyLocation::class, $response->getLocation());
+        $this->assertInstanceOf(PharmacyContact::class, $response->getContact());
     }
 }

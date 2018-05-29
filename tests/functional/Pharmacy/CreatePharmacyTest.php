@@ -17,15 +17,13 @@ class CreatePharmacyTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
-     * @group Pharmacy
+    /**
+     * @throws \Exception
      */
     public function testCreatePharmacy(): void
     {
-        $pharmacy = new Pharmacy([
-            'id' => 1,
-            'name' => 'Pharmacy name',
-        ]);
+        $pharmacy = (new Pharmacy())
+        ->setId(1)->setName('test');
 
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new CreatePharmacy($pharmacy));

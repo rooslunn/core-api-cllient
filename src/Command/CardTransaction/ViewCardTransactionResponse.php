@@ -26,13 +26,19 @@ class ViewCardTransactionResponse implements Response
 
     /**
      * @return CardTransaction[]
+     * @throws \JsonMapper_Exception
      */
-    public function toModel(): array
+    public function toModel()
     {
         $mapper = new JsonMapper();
 
-        return array_map(function ($item) use ($mapper) {
-            return $mapper->map($item, new CardTransaction());
-        }, $this->objectResult);
+        $return = [];
+
+        foreach ($this->objectResult as $trans){
+            $trans->time = (new \DateTime())->setTimestamp($trans->time);
+            $return[] = $mapper->map($trans, new CardTransaction());
+        }
+
+        return $return;
     }
 }

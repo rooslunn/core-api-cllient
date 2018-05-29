@@ -1,6 +1,7 @@
 <?php
 namespace Pilulka\CoreApiClient\Command\Category;
 
+use JsonMapper;
 use Pilulka\CoreApiClient\Model\Category\Category;
 use Pilulka\CoreApiClient\Model\Category\CategoryContent;
 use Pilulka\CoreApiClient\Model\Category\CategoryFilter;
@@ -9,45 +10,28 @@ use Pilulka\CoreApiClient\Response\Response;
 class ViewCategoryResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
     {
-        return $this->arrayResult['id'] ? true : false;
+        return $this->objectResult->id ? true : false;
     }
 
-    /**
-     * @return array
-     */
-    public function toObject(): array
-    {
-        return $this->arrayResult;
-    }
 
     /**
-     * @return Card
+     * @return object|Category
+     * @throws \JsonMapper_Exception
      */
-    public function toModel(): Category
+    public function toModel()
     {
-        $category = new Category($this->arrayResult);
-
-        if (isset($category->content)) {
-            $category->content = new CategoryContent($category->content);
-        }
-
-        if (isset($category->filters)) {
-            $category->filters = array_map(function ($filter) {
-                return new CategoryFilter($filter);
-            }, $category->filters);
-        }
-
-        return $category;
+        $mapper = new JsonMapper();
+        return $mapper->map($this->objectResult, new Category());
     }
 }

@@ -40,15 +40,15 @@ class UpdateComment implements Request
     {
         $comment = $this->comment;
         return \GuzzleHttp\json_encode([
-            'id' => $comment->id,
-            'type' => $comment->type,
-            'objectId' => $comment->objectId,
-            'userId' => $comment->userId,
-            'name' => $comment->name,
-            'email' => $comment->email,
-            'content' => $comment->content,
-            'rating' => $comment->rating,
-            'ip' => $comment->ip,
+            'id' => $comment->getId(),
+            'type' => $comment->getType(),
+            'objectId' => $comment->getObjectId(),
+            'userId' => $comment->getUserId(),
+            'name' => $comment->getName(),
+            'email' => $comment->getEmail(),
+            'content' => $comment->getContent(),
+            'rating' => $comment->getRating(),
+            'ip' => $comment->getId(),
         ]);
     }
 }

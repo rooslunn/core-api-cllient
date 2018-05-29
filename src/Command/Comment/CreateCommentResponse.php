@@ -2,39 +2,32 @@
 
 namespace Pilulka\CoreApiClient\Command\Comment;
 
-use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
 
 class CreateCommentResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $commentResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->commentResult = $arrayResult;
     }
 
     public function result(): bool
     {
-        return $this->arrayResult['result'] ?? false;
+        return $this->commentResult->result ?? false;
     }
 
     /**
-     * @return array
+     * @return object
      */
-    public function toObject(): array
+    public function toModel()
     {
-        return $this->arrayResult;
-    }
-
-    /**
-     * @return JsonModel
-     */
-    public function toModel(): JsonModel
-    {
-        return new JsonModel($this->arrayResult);
+        $result = new \stdClass();
+        $result->result = $this->result();
+        return $result;
     }
 }
