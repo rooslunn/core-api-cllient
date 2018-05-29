@@ -1,7 +1,7 @@
 <?php
 namespace Model;
 
-use Pilulka\CoreApiClient\Model\Card;
+use Pilulka\CoreApiClient\Model\Brand;
 
 class BrandTest extends \Codeception\Test\Unit
 {
@@ -15,12 +15,13 @@ class BrandTest extends \Codeception\Test\Unit
     }
 
     // tests
+
+    /**
+     * @throws \ReflectionException
+     */
     public function testBrandModel(): void
     {
-        $brand = new Card([
-            'id' => 1,
-            'name' => 'BrandTest',
-        ]);
-        $this->assertEquals(1, $brand->id);
+        $brand =$this->createMock(Brand::class);
+        $this->assertInstanceOf(Brand::class, $brand);
     }
 }

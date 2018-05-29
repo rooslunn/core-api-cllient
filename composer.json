@@ -12,7 +12,8 @@
         }
     ],
     "require": {
-        "guzzlehttp/guzzle": "~6.0"
+        "guzzlehttp/guzzle": "~6.0",
+        "netresearch/jsonmapper": "^1.2"
     },
     "autoload": {
         "psr-4": {

@@ -40,8 +40,8 @@ class CreateBrand implements Request
     public function getBody(): string
     {
         return \GuzzleHttp\json_encode([
-            'id' => $this->brand->id,
-            'name' => $this->brand->name,
+            'id' => $this->brand->getId(),
+            'name' => $this->brand->getName(),
         ]);
     }
 }

@@ -3,6 +3,7 @@
 
 namespace Pilulka\CoreApiClient\Command\Brand;
 
+use Pilulka\CoreApiClient\Model\Brand;
 use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
 
@@ -32,10 +33,13 @@ class CreateBrandResponse implements Response
     }
 
     /**
-     * @return JsonModel
+     * @return object
+     * @throws \JsonMapper_Exception
      */
-    public function toModel(): JsonModel
+    public function toModel()
     {
-        return new JsonModel($this->arrayResult);
+        $result = new \stdClass();
+        $result->result = $this->result();
+        return $result;
     }
 }

@@ -4,6 +4,7 @@ namespace Brand;
 
 use Pilulka\CoreApiClient\Command\Brand\ViewBrand;
 use Pilulka\CoreApiClient\JsonApiClient;
+use Pilulka\CoreApiClient\Model\Brand;
 
 class ViewBrandTest extends \Codeception\Test\Unit
 {
@@ -21,10 +22,11 @@ class ViewBrandTest extends \Codeception\Test\Unit
      */
     public function testViewBrand()
     {
+        /** @var Brand $brand */
         $brand = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new ViewBrand(1));
 
-        $this->assertEquals(1, $brand->id);
+        $this->assertEquals(1, $brand->getId());
     }
 
 }

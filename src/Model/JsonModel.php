@@ -4,33 +4,33 @@
 namespace Pilulka\CoreApiClient\Model;
 
 
+use JsonMapper;
+
 class JsonModel
 {
     /** @var array */
     protected $attributes;
+    /**
+     * @var string
+     */
+    private $modelClass;
 
-    public function __construct(array $attributes = [])
+    private $mapper;
+
+    /**
+     * JsonModel constructor.
+     * @param string $modelClass
+     * @param array $attributes
+     * @throws \JsonMapper_Exception
+     */
+    public function __construct(string $modelClass, array $attributes = [])
     {
         $this->attributes = $attributes;
+        $this->modelClass = $modelClass;
+
+        $this->mapper = new JsonMapper();
+
+        return $this->mapper->map($this->attributes, new $this->modelClass());
     }
 
-    public function __get(string $attribute)
-    {
-        if (array_key_exists($attribute, $this->attributes)) {
-            return $this->attributes[$attribute];
-        }
-        return null;
-    }
-
-    public function __set(string $attribute, $value): void
-    {
-        if (array_key_exists($attribute, $this->attributes)) {
-            $this->attributes[$attribute] = $value;
-        }
-    }
-
-    public function __isset(string $attribute): bool
-    {
-        return array_key_exists($attribute, $this->attributes);
-    }
 }

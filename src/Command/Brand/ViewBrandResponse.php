@@ -4,6 +4,7 @@
 namespace Pilulka\CoreApiClient\Command\Brand;
 
 
+use JsonMapper;
 use Pilulka\CoreApiClient\Model\Brand;
 use Pilulka\CoreApiClient\Response\Response;
 
@@ -35,10 +36,12 @@ class ViewBrandResponse implements Response
     }
 
     /**
-     * @return Brand
+     * @return object|Brand
+     * @throws \JsonMapper_Exception
      */
-    public function toModel(): Brand
+    public function toModel()
     {
-        return new Brand($this->arrayResult);
+        $mapper = new JsonMapper();
+        return $mapper->map(\GuzzleHttp\json_decode(\GuzzleHttp\json_encode($this->arrayResult)), new Brand());
     }
 }
