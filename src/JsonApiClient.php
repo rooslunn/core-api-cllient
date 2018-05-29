@@ -6,7 +6,6 @@ namespace Pilulka\CoreApiClient;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Pilulka\CoreApiClient\Exception\HttpException;
-use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
 use Pilulka\CoreApiClient\Response\Response;
@@ -26,7 +25,7 @@ class JsonApiClient
 
     /**
      * @param Request $request
-     * @return array
+     * @return JsonModel|array
      * @throws \Exception
      */
     public function send(Request $request)
@@ -47,7 +46,7 @@ class JsonApiClient
             );
 
             if ($response->getStatusCode() === Http::CODE_404) {
-                throw new HttpException();
+                throw new HttpException('You stuck with 404 :-(');
             }
 
             $responseArray = $this->responseArray($response);
@@ -56,10 +55,8 @@ class JsonApiClient
             return new $className($responseArray);
 
         } catch (GuzzleException $e) {
-            //TODO return ErrorResponse
             return new ResponseException(Http::CODE_500);
         } catch (HttpException $e) {
-            //TODO return ErrorResponse
             return new ResponseException(Http::CODE_404);
         }
     }
@@ -89,7 +86,8 @@ class JsonApiClient
      */
     private function responseArray(ResponseInterface $response): array
     {
-        return \GuzzleHttp\json_decode($response->getBody(), true);
+        $uncommented = JsonArtisan::uncomment((string) $response->getBody());
+        return \GuzzleHttp\json_decode($uncommented, true);
     }
 
     /**
@@ -99,9 +97,9 @@ class JsonApiClient
      */
     private function responseClass(Request $request): string
     {
-        $className = get_class($request) . 'Response';
+        $className = \get_class($request) . 'Response';
         if (!class_exists($className)) {
-            throw new \Exception($className . ' not found');
+            throw new \InvalidArgumentException($className . ' not found');
         }
         return $className;
     }
