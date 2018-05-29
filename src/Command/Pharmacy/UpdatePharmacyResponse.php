@@ -2,39 +2,33 @@
 
 namespace Pilulka\CoreApiClient\Command\Pharmacy;
 
-use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
 
 class UpdatePharmacyResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
     {
-        return $this->arrayResult['result'] ?? false;
+        return $this->objectResult->result ?? false;
     }
 
-    /**
-     * @return array
-     */
-    public function toObject(): array
-    {
-        return $this->arrayResult;
-    }
 
     /**
-     * @return JsonModel
+     * @return object
      */
-    public function toModel(): JsonModel
+    public function toModel()
     {
-        return new JsonModel($this->arrayResult);
+        $result = new \stdClass();
+        $result->result = $this->result();
+        return $result;
     }
 }

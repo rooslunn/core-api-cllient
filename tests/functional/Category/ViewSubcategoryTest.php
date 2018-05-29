@@ -24,9 +24,7 @@ class ViewSubcategoryTest extends \Codeception\Test\Unit
         $subcategory = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new ViewSubcategory(1));
 
-        $category = $subcategory->categories[0];
+        $category = $subcategory['categories'][0];
         $this->assertInstanceOf(Category::class, $category);
-        $this->assertInstanceOf(CategoryContent::class, $category->content);
-        $this->assertInstanceOf(CategoryFilter::class, $category->filters[0]);
     }
 }

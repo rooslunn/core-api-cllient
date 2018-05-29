@@ -39,9 +39,9 @@ class CreateManufacturer implements Request
     public function getBody(): string
     {
         return \GuzzleHttp\json_encode([
-            'id' => $this->manufacturer->id,
-            'name' => $this->manufacturer->name,
-            'content' => $this->manufacturer->content,
+            'id' => $this->manufacturer->getId(),
+            'name' => $this->manufacturer->getName(),
+            'content' => $this->manufacturer->getContent(),
         ]);
     }
 }

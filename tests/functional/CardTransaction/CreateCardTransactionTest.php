@@ -17,15 +17,17 @@ class CreateCardTransactionTest extends \Codeception\Test\Unit
     }
 
     // tests
+
+    /**
+     * @throws \ReflectionException
+     */
     public function testCreateTransaction(): void
     {
-        $cardTransaction = new CardTransaction([
-            'id' => 3719525,
-            'userId' => 107219,
-            'time' => 1418932333,
-            'credits' => -14.14,
-            'orderNumber' => null,
-        ]);
+        $cardTransaction = $this->createMock(CardTransaction::class);
+        $cardTransaction->method('getId')
+            ->willReturn(1);
+
+
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new CreateCardTransaction($cardTransaction));
 

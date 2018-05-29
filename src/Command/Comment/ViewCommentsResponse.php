@@ -2,6 +2,7 @@
 
 namespace Pilulka\CoreApiClient\Command\Comment;
 
+use JsonMapper;
 use Pilulka\CoreApiClient\Model\Comment\Comment;
 use Pilulka\CoreApiClient\Model\Comment\Comments;
 use Pilulka\CoreApiClient\Model\JsonModel;
@@ -10,39 +11,35 @@ use Pilulka\CoreApiClient\Response\Response;
 class ViewCommentsResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
     {
-        return $this->arrayResult['totsl'] ? true : false;
+        return $this->objectResult->totsl ? true : false;
     }
 
     /**
      * @return array
+     * @throws \JsonMapper_Exception
      */
-    public function toObject(): array
+    public function toModel(): array
     {
-        return $this->arrayResult;
-    }
+        $result['total'] = $this->objectResult->total;
 
-    /**
-     * @return JsonModel
-     */
-    public function toModel(): JsonModel
-    {
-        $comments = new Comments($this->arrayResult);
+        $mapper = new JsonMapper();
 
-        $comments->comments = array_map(function ($comment) {
-            return new Comment($comment);
-        }, $comments->comments);
+        foreach ($this->objectResult->comments as $comment) {
+            $result['comments'][] = $mapper->map($comment, new Comment());
+        }
 
-        return $comments;
+        return $result;
+
     }
 }

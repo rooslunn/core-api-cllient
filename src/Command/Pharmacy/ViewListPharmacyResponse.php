@@ -2,44 +2,41 @@
 
 namespace Pilulka\CoreApiClient\Command\Pharmacy;
 
+use JsonMapper;
 use Pilulka\CoreApiClient\Model\Pharmacy\Pharmacy;
-use Pilulka\CoreApiClient\Model\Pharmacy\PharmacyList;
 use Pilulka\CoreApiClient\Response\Response;
 
 class ViewListPharmacyResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
     {
-        return $this->arrayResult['total'] ? true : false;
+        return $this->objectResult->total ? true : false;
     }
 
     /**
-     * @return array
+     * @return object|array
+     * @throws \JsonMapper_Exception
      */
-    public function toObject(): array
+    public function toModel()
     {
-        return $this->arrayResult;
-    }
+        $return['total'] = $this->objectResult->total;
 
-    /**
-     * @return PharmacyList
-     */
-    public function toModel(): PharmacyList
-    {
-        $list = new PharmacyList($this->arrayResult);
-        $list->pharmacy = array_map(function ($item) {
-            return new Pharmacy($item);
-        }, $list->pharmacy);
-        return $list;
+        $mapper = new JsonMapper();
+
+        foreach ($this->objectResult->pharmacy ?? [] as $pharma) {
+            $return['pharmacy'][] = $mapper->map($pharma, new Pharmacy());
+        }
+
+        return $return;
     }
 }

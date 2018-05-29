@@ -17,15 +17,14 @@ class CreateCommentTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
-     * @group Comment
+    /**
+     * @throws \ReflectionException
      */
     public function testCreateComment(): void
     {
-        $comment = new Comment([
-            'id' => 1,
-            'name' => 'Comment name',
-        ]);
+        $comment = $this->createMock(Comment::class);
+        $comment->method('getId')
+            ->willReturn(1);
 
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new CreateComment($comment));

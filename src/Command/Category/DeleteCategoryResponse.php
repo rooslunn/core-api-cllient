@@ -9,33 +9,28 @@ use Pilulka\CoreApiClient\Response\Response;
 class DeleteCategoryResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
     {
-        return $this->arrayResult['result'] ?? false;
+        return $this->objectResult->result ?? false;
     }
 
     /**
-     * @return array
+     * @return object
      */
-    public function toObject(): array
+    public function toModel()
     {
-        return $this->arrayResult;
+        $result = new \stdClass();
+        $result->result = $this->result();
+        return $result;
     }
 
-    /**
-     * @return JsonModel
-     */
-    public function toModel(): JsonModel
-    {
-        return new JsonModel($this->arrayResult);
-    }
 }

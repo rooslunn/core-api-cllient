@@ -17,16 +17,15 @@ class CreateManufacturerTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
-     * @group Manufacturer
+
+    /**
+     * @throws \ReflectionException
      */
     public function testCreateManufacturer(): void
     {
-        $manufacturer = new Manufacturer([
-            'id' => 1,
-            'name' => 'Manufacturer name',
-            'content' => 'Manufacturer content',
-        ]);
+        $manufacturer = $this->createMock(Manufacturer::class);
+        $manufacturer->method('getId')
+            ->willReturn(1);
 
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new CreateManufacturer($manufacturer));

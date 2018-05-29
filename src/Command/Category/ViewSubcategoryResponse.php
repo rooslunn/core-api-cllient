@@ -1,56 +1,43 @@
 <?php
 namespace Pilulka\CoreApiClient\Command\Category;
 
+use JsonMapper;
 use Pilulka\CoreApiClient\Model\Category\{
-    Category, CategoryContent, CategoryFilter, Subcategory
+    Category
 };
 use Pilulka\CoreApiClient\Response\Response;
 
 class ViewSubcategoryResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
     {
-        return $this->arrayResult['total'] ? true : false;
+        return $this->objectResult->total ? true : false;
     }
 
     /**
      * @return array
+     * @throws \JsonMapper_Exception
      */
-    public function toObject(): array
+    public function toModel(): array
     {
-        return $this->arrayResult;
-    }
+        $result['total'] = $this->objectResult->total;
 
-    /**
-     * @return Subcategory
-     */
-    public function toModel(): Subcategory
-    {
-        $subcategory = new Subcategory($this->arrayResult);
+        $mapper = new JsonMapper();
 
-        $subcategory->categories = array_map(function ($category) {
-            $category = new Category($category);
-            if (isset($category->content)) {
-                $category->content = new CategoryContent($category->content);
-            }
-            if (isset($category->filters)) {
-                $category->filters = array_map(function ($filter) {
-                    return new CategoryFilter($filter);
-                }, $category->filters);
-            }
-            return $category;
-        }, $subcategory->categories);
+        foreach ($this->objectResult->categories as $category) {
+            $result['categories'][] = $mapper->map($category, new Category());
+        }
 
-        return $subcategory;
+        return $result;
     }
 }

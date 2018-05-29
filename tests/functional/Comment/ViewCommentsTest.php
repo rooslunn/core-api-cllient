@@ -4,7 +4,7 @@ namespace Comments;
 
 use Pilulka\CoreApiClient\Command\Comment\ViewComments;
 use Pilulka\CoreApiClient\JsonApiClient;
-use Pilulka\CoreApiClient\Model\Comment\{Comment, Comments, CommentTypes};
+use Pilulka\CoreApiClient\Model\Comment\{Comment, CommentTypes};
 
 class ViewCommentsTest extends \Codeception\Test\Unit
 {
@@ -28,7 +28,6 @@ class ViewCommentsTest extends \Codeception\Test\Unit
         $comments = (new JsonApiClient(CORE_API_URL_BASE))
             ->send($command);
 
-        $this->assertInstanceOf(Comments::class, $comments);
-        $this->assertInstanceOf(Comment::class, $comments->comments[0]);
+        $this->assertInstanceOf(Comment::class, $comments['comments'][0]);
     }
 }

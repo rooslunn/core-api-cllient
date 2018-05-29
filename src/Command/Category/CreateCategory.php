@@ -46,16 +46,16 @@ class CreateCategory implements Request
     {
         $category = $this->category;
         $arrForJson = [
-            'id' => $category->id,
-            'name' => $category->name,
-            'parentId' => $category->parentId,
-            'position' => $category->position,
-            'content' => $category->content,
-            'isActive' => $category->isActive,
-            'isDeleted' => $category->isDeleted,
-            'image' => $category->image,
-            'inMainMenu' => $category->inMainMenu,
-            'filtes' => $category->filters,
+            'id' => $category->getId(),
+            'name' => $category->getName(),
+            'parentId' => $category->getParentId(),
+            'position' => $category->getPosition(),
+            'content' => $category->getContetn(),
+            'isActive' => $category->isActive(),
+            'isDeleted' => $category->isDeleted(),
+            'image' => $category->getImage(),
+            'inMainMenu' => $category->isInMainMenu(),
+            'filtes' => $category->getFilters(),
         ];
         return \GuzzleHttp\json_encode($arrForJson);
     }

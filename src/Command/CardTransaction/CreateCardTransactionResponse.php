@@ -20,7 +20,7 @@ class CreateCardTransactionResponse implements Response
 
     public function result(): bool
     {
-        return $this->objectResult['result'] ?? false;
+        return $this->objectResult->result ?? false;
     }
 
     /**

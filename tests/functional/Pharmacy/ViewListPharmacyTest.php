@@ -19,8 +19,8 @@ class ViewListPharmacyTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
-     * @group Pharmacy
+    /**
+     * @throws \Exception
      */
     public function testViewListPharmacy(): void
     {
@@ -35,7 +35,6 @@ class ViewListPharmacyTest extends \Codeception\Test\Unit
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new ViewListPharmacy($params));
 
-        $this->assertInstanceOf(PharmacyList::class, $response);
-        $this->assertInstanceOf(Pharmacy::class, $response->pharmacy[0]);
+        $this->assertInstanceOf(Pharmacy::class, $response['pharmacy'][0]);
     }
 }

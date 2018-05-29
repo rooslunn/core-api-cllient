@@ -2,6 +2,7 @@
 
 namespace Pilulka\CoreApiClient\Command\Pharmacy;
 
+use JsonMapper;
 use Pilulka\CoreApiClient\Model\Pharmacy\{
     Pharmacy, PharmacyLocation, PharmacyContact, PharmacyOpeningTime
 };
@@ -10,37 +11,33 @@ use Pilulka\CoreApiClient\Response\Response;
 class ViewPharmacyResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
     {
-        return $this->arrayResult['id'] ? true : false;
+        return $this->objectResult->id ? true : false;
     }
 
     /**
-     * @return array
+     * @return object|Pharmacy
+     * @throws \JsonMapper_Exception
      */
-    public function toObject(): array
+    public function toModel()
     {
-        return $this->arrayResult;
-    }
+        $mapper = new JsonMapper();
+        return $mapper->map($this->objectResult, new Pharmacy());
 
-    /**
-     * @return Pharmacy
-     */
-    public function toModel(): Pharmacy
-    {
-        $pharmacy = new Pharmacy($this->arrayResult);
-        $pharmacy->location = new PharmacyLocation($pharmacy->location);
-        $pharmacy->contact = new PharmacyContact($pharmacy->contact);
-        $pharmacy->openingTime = new PharmacyOpeningTime($pharmacy->openingTime);
-        return $pharmacy;
+//        $pharmacy = new Pharmacy($this->objectResult);
+//        $pharmacy->location = new PharmacyLocation($pharmacy->location);
+//        $pharmacy->contact = new PharmacyContact($pharmacy->contact);
+//        $pharmacy->openingTime = new PharmacyOpeningTime($pharmacy->openingTime);
+//        return $pharmacy;
     }
 }

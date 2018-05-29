@@ -39,7 +39,7 @@ class CreateComment implements Request
     public function getBody(): string
     {
         return \GuzzleHttp\json_encode([
-            'id' => $this->comment->id,
+            'id' => $this->comment->getId(),
         ]);
     }
 }

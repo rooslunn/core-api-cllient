@@ -7,33 +7,25 @@ use Pilulka\CoreApiClient\Response\Response;
 class ViewRatingCountsResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
     {
-        return \count($this->arrayResult) > 0;
+        return is_object($this->objectResult);
     }
 
     /**
-     * @return array
+     * @return object
      */
-    public function toObject(): array
+    public function toModel()
     {
-        return $this->arrayResult;
-    }
-
-    /**
-     * @return array
-     */
-    public function toModel(): array
-    {
-        return $this->toObject();
+        return $this->objectResult;
     }
 }
