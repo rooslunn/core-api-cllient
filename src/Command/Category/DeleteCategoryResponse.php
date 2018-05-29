@@ -26,7 +26,7 @@ class DeleteCategoryResponse implements Response
     /**
      * @return array
      */
-    public function toArray(): array
+    public function toObject(): array
     {
         return $this->arrayResult;
     }

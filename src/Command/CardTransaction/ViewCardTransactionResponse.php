@@ -3,19 +3,20 @@
 
 namespace Pilulka\CoreApiClient\Command\CardTransaction;
 
-use Pilulka\CoreApiClient\Model\CardTransaction;
+use JsonMapper;
+use Pilulka\CoreApiClient\Model\CardTransaction\CardTransaction;
 use Pilulka\CoreApiClient\Response\Response;
 
 class ViewCardTransactionResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
@@ -24,20 +25,14 @@ class ViewCardTransactionResponse implements Response
     }
 
     /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        return $this->arrayResult;
-    }
-
-    /**
      * @return CardTransaction[]
      */
     public function toModel(): array
     {
-        return array_map(function ($item) {
-            return new CardTransaction($item);
-        }, $this->arrayResult);
+        $mapper = new JsonMapper();
+
+        return array_map(function ($item) use ($mapper) {
+            return $mapper->map($item, new CardTransaction());
+        }, $this->objectResult);
     }
 }

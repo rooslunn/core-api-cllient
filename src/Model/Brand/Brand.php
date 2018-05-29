@@ -1,10 +1,10 @@
 <?php
 
-namespace Pilulka\CoreApiClient\Model;
+namespace Pilulka\CoreApiClient\Model\Brand;
 
 /**
  * Class Brand
- * @package Pilulka\CoreApi\Domain\Model\Brand
+ * @package Pilulka\CoreApiClient\Model\Brand
  */
 class Brand
 {

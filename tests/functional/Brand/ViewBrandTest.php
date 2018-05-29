@@ -4,7 +4,7 @@ namespace Brand;
 
 use Pilulka\CoreApiClient\Command\Brand\ViewBrand;
 use Pilulka\CoreApiClient\JsonApiClient;
-use Pilulka\CoreApiClient\Model\Brand;
+use Pilulka\CoreApiClient\Model\Brand\Brand;
 
 class ViewBrandTest extends \Codeception\Test\Unit
 {

@@ -25,7 +25,7 @@ class JsonApiClient
 
     /**
      * @param Request $request
-     * @return JsonModel|array
+     * @return object|array
      * @throws \Exception
      */
     public function send(Request $request)
@@ -82,12 +82,12 @@ class JsonApiClient
 
     /**
      * @param $response
-     * @return array
+     * @return object
      */
-    private function responseArray(ResponseInterface $response): array
+    private function responseArray(ResponseInterface $response)
     {
         $uncommented = JsonArtisan::uncomment((string) $response->getBody());
-        return \GuzzleHttp\json_decode($uncommented, true);
+        return \GuzzleHttp\json_decode($uncommented);
     }
 
     /**

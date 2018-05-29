@@ -2,7 +2,7 @@
 
 namespace Pilulka\CoreApiClient\Command\CardTransaction;
 
-use Pilulka\CoreApiClient\Model\CardTransaction;
+use Pilulka\CoreApiClient\Model\CardTransaction\CardTransaction;
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
 
@@ -45,11 +45,11 @@ class CreateCardTransaction implements Request
     public function getBody(): string
     {
         return \GuzzleHttp\json_encode([
-            'id' => $this->transaction->id,
-            'userId' => $this->transaction->userId,
-            'time' => $this->transaction->time,
-            'credits' => $this->transaction->credits,
-            'orderNumber' => $this->transaction->orderNumber,
+            'id' => $this->transaction->getId(),
+            'userId' => $this->transaction->getUserId(),
+            'time' => $this->transaction->getTime(),
+            'credits' => $this->transaction->getCredits(),
+            'orderNumber' => $this->transaction->getOrderNumber(),
         ]);
     }
 }

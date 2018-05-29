@@ -12,12 +12,7 @@ interface Response
     public function result(): bool;
 
     /**
-     * @return array
-     */
-    public function toArray(): array;
-
-    /**
-     * @return JsonModel
+     * @return object
      */
     public function toModel();
 }

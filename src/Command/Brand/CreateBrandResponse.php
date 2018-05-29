@@ -3,38 +3,27 @@
 
 namespace Pilulka\CoreApiClient\Command\Brand;
 
-use Pilulka\CoreApiClient\Model\Brand;
-use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
 
 class CreateBrandResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
     {
-        return $this->arrayResult['result'] ?? false;
-    }
-
-    /**
-     * @return array
-     */
-    public function toArray(): array
-    {
-        return $this->arrayResult;
+        return $this->objectResult->result ?? false;
     }
 
     /**
      * @return object
-     * @throws \JsonMapper_Exception
      */
     public function toModel()
     {

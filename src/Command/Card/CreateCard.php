@@ -3,7 +3,7 @@
 
 namespace Pilulka\CoreApiClient\Command\Card;
 
-use Pilulka\CoreApiClient\Model\Card;
+use Pilulka\CoreApiClient\Model\Card\Card;
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
 
@@ -40,10 +40,10 @@ class CreateCard implements Request
     public function getBody(): string
     {
         return \GuzzleHttp\json_encode([
-            'userId' => $this->card->userId,
-            'isVip' => $this->card->isVip,
-            'credits' => $this->card->credits,
-            'cards' => $this->card->cards,
+            'userId' => $this->card->getUserId(),
+            'isVip' => false,
+            'credits' => $this->card->getCredits(),
+            'cards' => $this->card->getCards(),
         ]);
     }
 }

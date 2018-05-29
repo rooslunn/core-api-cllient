@@ -3,7 +3,7 @@ namespace CardTransaction;
 
 use Pilulka\CoreApiClient\Command\CardTransaction\CreateCardTransaction;
 use Pilulka\CoreApiClient\JsonApiClient;
-use Pilulka\CoreApiClient\Model\CardTransaction;
+use Pilulka\CoreApiClient\Model\CardTransaction\CardTransaction;
 
 class CreateCardTransactionTest extends \Codeception\Test\Unit
 {

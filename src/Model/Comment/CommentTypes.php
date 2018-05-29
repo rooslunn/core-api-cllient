@@ -2,10 +2,12 @@
 
 namespace Pilulka\CoreApiClient\Model\Comment;
 
-use Pilulka\CoreApiClient\Model\JsonModel;
-
-class CommentTypes extends JsonModel
+/**
+ * Class CommentTypes
+ * @package Pilulka\CoreApiClient\Model\Comment
+ */
+class CommentTypes
 {
-    public const COMMENT_TYPE_PRODUCT = 1;
-    public const COMMENT_TYPE_PAGE = 2;
+    const COMMENT_TYPE_PRODUCT = 1;
+    const COMMENT_TYPE_PAGE = 2;
 }

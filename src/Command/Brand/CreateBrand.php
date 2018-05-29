@@ -3,7 +3,7 @@
 
 namespace Pilulka\CoreApiClient\Command\Brand;
 
-use Pilulka\CoreApiClient\Model\Brand;
+use Pilulka\CoreApiClient\Model\Brand\Brand;
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
 
