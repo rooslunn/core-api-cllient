@@ -5,27 +5,38 @@ namespace Pilulka\CoreApiClient\Model\Category;
 
 class Category
 {
-
-    /** @var int */
+    /** @var  int */
     private $id;
-    /** @var string */
+
+    /** @var  string */
     private $name;
-    /** @var int|null */
+
+    /** @var  int|null */
     private $parentId;
-    /** @var int */
+
+    /** @var  int */
     private $position;
-    /** @var string */
-    private $contetn;
-    /** @var bool */
+
+    /** @var  CategoryContent */
+    private $content;
+
+    /** @var  bool */
     private $isActive;
-    /** @var bool */
+
+    /** @var  bool */
     private $isDeleted;
-    /** @var string */
+
+    /** @var  string */
     private $image;
-    /** @var bool */
-    private $isInMainMenu;
-    /** @var array */
+
+    /** @var  bool */
+    private $inMainMenu;
+
+    /** @var CategoryFilter[]|null */
     private $filters;
+
+    /** @var CategoryFrontendArticle[] */
+    private $frontendArticles;
 
     /**
      * @return int
@@ -37,10 +48,12 @@ class Category
 
     /**
      * @param int $id
+     * @return Category
      */
-    public function setId(int $id)
+    public function setId(int $id): Category
     {
         $this->id = $id;
+        return $this;
     }
 
     /**
@@ -53,10 +66,12 @@ class Category
 
     /**
      * @param string $name
+     * @return Category
      */
-    public function setName(string $name)
+    public function setName(string $name): Category
     {
         $this->name = $name;
+        return $this;
     }
 
     /**
@@ -64,47 +79,53 @@ class Category
      */
     public function getParentId()
     {
-        return $this->parentId;
+        return (int)$this->parentId;
     }
 
     /**
      * @param int|null $parentId
+     * @return Category
      */
     public function setParentId($parentId)
     {
         $this->parentId = $parentId;
+        return $this;
     }
 
     /**
      * @return int
      */
-    public function getPosition(): int
+    public function getPosition(): ?int
     {
         return $this->position;
     }
 
     /**
-     * @param int $position
+     * @param int|null $position
+     * @return Category
      */
-    public function setPosition(int $position)
+    public function setPosition(?int $position): Category
     {
         $this->position = $position;
+        return $this;
     }
 
     /**
-     * @return string
+     * @return CategoryContent
      */
-    public function getContetn(): string
+    public function getContent(): CategoryContent
     {
-        return $this->contetn;
+        return $this->content;
     }
 
     /**
-     * @param string $contetn
+     * @param CategoryContent $content
+     * @return Category
      */
-    public function setContetn(string $contetn)
+    public function setContent(CategoryContent $content): Category
     {
-        $this->contetn = $contetn;
+        $this->content = $content;
+        return $this;
     }
 
     /**
@@ -117,10 +138,12 @@ class Category
 
     /**
      * @param bool $isActive
+     * @return Category
      */
-    public function setIsActive(bool $isActive)
+    public function setIsActive(bool $isActive): Category
     {
         $this->isActive = $isActive;
+        return $this;
     }
 
     /**
@@ -133,24 +156,26 @@ class Category
 
     /**
      * @param bool $isDeleted
+     * @return Category
      */
-    public function setIsDeleted(bool $isDeleted)
+    public function setIsDeleted(bool $isDeleted): Category
     {
         $this->isDeleted = $isDeleted;
+        return $this;
     }
 
     /**
-     * @return string
+     * @return string|null
      */
-    public function getImage(): string
+    public function getImage(): ?string
     {
         return $this->image;
     }
 
     /**
-     * @param string $image
+     * @param string|null $image
      */
-    public function setImage(string $image)
+    public function setImage(?string $image)
     {
         $this->image = $image;
     }
@@ -160,31 +185,52 @@ class Category
      */
     public function isInMainMenu(): bool
     {
-        return $this->isInMainMenu;
+        return $this->inMainMenu;
     }
 
     /**
-     * @param bool $isInMainMenu
+     * @param bool $inMainMenu
+     * @return Category
      */
-    public function setIsInMainMenu(bool $isInMainMenu)
+    public function setInMainMenu(bool $inMainMenu): Category
     {
-        $this->isInMainMenu = $isInMainMenu;
+        $this->inMainMenu = $inMainMenu;
+        return $this;
     }
 
     /**
-     * @return array
+     * @return null|CategoryFilter[]
      */
-    public function getFilters(): array
+    public function getFilters(): ?array
     {
         return $this->filters;
     }
 
     /**
-     * @param array $filters
+     * @param null|CategoryFilter[] $filters
+     * @return Category
      */
-    public function setFilters(array $filters)
+    public function setFilters(?array $filters): Category
     {
         $this->filters = $filters;
+        return $this;
     }
 
+    /**
+     * @return CategoryFrontendArticle[]|null
+     */
+    public function getFrontendArticles(): ?array
+    {
+        return $this->frontendArticles;
+    }
+
+    /**
+     * @param CategoryFrontendArticle[]|null $frontendArticles
+     * @return Category
+     */
+    public function setFrontendArticles(?array $frontendArticles): Category
+    {
+        $this->frontendArticles = $frontendArticles;
+        return $this;
+    }
 }

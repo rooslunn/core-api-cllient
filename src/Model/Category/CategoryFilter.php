@@ -2,10 +2,6 @@
 
 namespace Pilulka\CoreApiClient\Model\Category;
 
-/**
- * Class CategoryFilter
- * @package Pilulka\CoreApiClient\Model\Category
- */
 class CategoryFilter
 {
     const TYPE_PARAM_GROUP = 0;

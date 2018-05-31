@@ -50,7 +50,7 @@ class CreateCategory implements Request
             'name' => $category->getName(),
             'parentId' => $category->getParentId(),
             'position' => $category->getPosition(),
-            'content' => $category->getContetn(),
+            'content' => $category->getContent(),
             'isActive' => $category->isActive(),
             'isDeleted' => $category->isDeleted(),
             'image' => $category->getImage(),
