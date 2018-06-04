@@ -127,7 +127,7 @@ $fileContent = <<<PHP
 
 namespace Pilulka\CoreApiClient\Command\\{$model};
 
-use Pilulka\CoreApiClient\Model\\{$modelNamespaced};
+use Pilulka\CoreApiClient\Model\\{$model}\\{$model};
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
 
@@ -229,7 +229,7 @@ namespace {$model};
 
 use Pilulka\CoreApiClient\Command\\{$model}\\{$command};
 use Pilulka\CoreApiClient\JsonApiClient;
-use Pilulka\CoreApiClient\Model\\{$modelNamespaced};
+use Pilulka\CoreApiClient\Model\\{$model}\\{$model};
 
 class {$command}Test extends \Codeception\Test\Unit
 {
