@@ -133,7 +133,7 @@ use Pilulka\CoreApiClient\Request\Request;
 
 class {$command} implements Request
 {
-    private const uri = '{$uri}';
+    private const URI = '{$uri}';
 
     /** @var $model */
     private \${$modelVar};
@@ -156,7 +156,7 @@ class {$command} implements Request
      */
     public function getUrl(): string
     {
-        return self::uri;
+        return self::URI;
     }
 
     /**
@@ -164,9 +164,7 @@ class {$command} implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode([
-            'id' => \$this->{$modelVar}->id,
-        ]);
+        return \GuzzleHttp\json_encode(\$this->{$modelVar});
     }
 }
 PHP;
@@ -182,40 +180,33 @@ $fileContent = <<<PHP
 
 namespace Pilulka\CoreApiClient\Command\\{$model};
 
-use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
 
 class {$command}Response implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private \$arrayResult;
+    private \$objectResult;
 
-    public function __construct(array \$arrayResult)
+    public function __construct(\$arrayResult)
     {
-        \$this->arrayResult = \$arrayResult;
+        \$this->objectResult = \$arrayResult;
     }
 
     public function result(): bool
     {
-        return \$this->arrayResult['result'] ?? false;
+        return \$this->objectResult->result ?? false;
     }
 
     /**
-     * @return array
+     * @return object
      */
-    public function toArray(): array
+    public function toModel()
     {
-        return \$this->arrayResult;
-    }
-
-    /**
-     * @return JsonModel
-     */
-    public function toModel(): JsonModel
-    {
-        return new JsonModel(\$this->arrayResult);
+        \$result = new \stdClass();
+        \$result->result = \$this->result();
+        return \$result;
     }
 }
 PHP;
@@ -256,10 +247,7 @@ class {$command}Test extends \Codeception\Test\Unit
      */
     public function test{$command}(): void
     {
-        \${$modelVar} = new {$model}([
-            'id' => 1,
-            'name' => '{$model} name',
-        ]);
+        \${$modelVar} = (new {$model}())->set;
 
         \$response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new {$command}(\${$modelVar}));
