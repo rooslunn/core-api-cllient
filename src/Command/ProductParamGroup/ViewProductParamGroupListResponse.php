@@ -5,7 +5,7 @@ namespace Pilulka\CoreApiClient\Command\ProductParamGroup;
 use Pilulka\CoreApiClient\Model\ProductParamGroup\ProductParamGroup;
 use Pilulka\CoreApiClient\Response\Response;
 
-class ProductParamGroupListResponse implements Response
+class ViewProductParamGroupListResponse implements Response
 {
     /**
      * @var object
