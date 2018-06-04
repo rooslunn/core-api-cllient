@@ -4,7 +4,6 @@
 namespace Pilulka\CoreApiClient\Response;
 
 
-use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Request\Http;
 
 class ResponseException implements Response
@@ -39,10 +38,10 @@ class ResponseException implements Response
     }
 
     /**
-     * @return JsonModel
+     * @return object
      */
-    public function toModel(): JsonModel
+    public function toModel()
     {
-        return new JsonModel($this->toObject());
+        return (object) $this->toObject();
     }
 }

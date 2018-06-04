@@ -4,7 +4,7 @@ namespace Pilulka\CoreApiClient\Command\Product;
 
 use Pilulka\CoreApiClient\Response\Response;
 
-class BrandsCountProductResponse implements Response
+class ProductsCountProductResponse implements Response
 {
     /**
      * @var object

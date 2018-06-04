@@ -2,11 +2,12 @@
 
 namespace Pilulka\CoreApiClient\Command\Product;
 
+use Pilulka\CoreApiClient\Model\Product\Product;
 use Pilulka\CoreApiClient\Request\{Http, Request};
 
-class BrandsCountProduct implements Request
+class ProductsCountProduct implements Request
 {
-    private const URI = '/product/brandcount?';
+    private const URI = '/product/count?';
 
     /** @var array */
     private $params;
@@ -29,8 +30,7 @@ class BrandsCountProduct implements Request
      */
     public function getUrl(): string
     {
-        $uri = self::URI . http_build_query($this->params);
-        return $uri;
+        return self::URI . http_build_query($this->params);
     }
 
     /**
