@@ -21,4 +21,22 @@ class JsonArtisan
         $commentPattern  = '/(\/\/[A-Za-z\s]+)$/m';
         return preg_replace($commentPattern, '', $json);
     }
+
+    /**
+     * @param iterable $items
+     * @param string $toClass
+     * @return array
+     * @throws \JsonMapper_Exception
+     */
+    public static function jsonMap(iterable $items, string $toClass): array
+    {
+        $result = [];
+        $mapper = new \JsonMapper();
+
+        foreach ($items as $item) {
+            $result[] = $mapper->map($item, new $toClass);
+        }
+
+        return $result;
+    }
 }
