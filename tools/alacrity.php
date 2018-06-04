@@ -128,8 +128,7 @@ $fileContent = <<<PHP
 namespace Pilulka\CoreApiClient\Command\\{$model};
 
 use Pilulka\CoreApiClient\Model\\{$model}\\{$model};
-use Pilulka\CoreApiClient\Request\Http;
-use Pilulka\CoreApiClient\Request\Request;
+use Pilulka\CoreApiClient\Request\{Http, Request};
 
 class {$command} implements Request
 {
