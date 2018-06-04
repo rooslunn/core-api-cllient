@@ -3,7 +3,6 @@
 
 namespace Pilulka\CoreApiClient\Command\Category;
 
-use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
 
 class DeleteCategoryResponse implements Response

@@ -41,7 +41,7 @@ class JsonApiClient
     private function sendRequest(Request $request): Response
     {
         try {
-            $response = (new Client())->send(
+            $response = (new Client(['verify' => false]))->send(
                 $this->request($request)
             );
 

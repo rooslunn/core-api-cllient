@@ -4,7 +4,7 @@ namespace Pilulka\CoreApiClient\Command\Comment;
 
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
-use Pilulka\Shop\Domain\Model\Comment\CommentTypes;
+use Pilulka\CoreApiClient\Model\Comment\CommentTypes;
 
 class ViewComments implements Request
 {

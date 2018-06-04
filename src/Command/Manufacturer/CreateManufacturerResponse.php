@@ -2,7 +2,6 @@
 
 namespace Pilulka\CoreApiClient\Command\Manufacturer;
 
-use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
 
 class CreateManufacturerResponse implements Response

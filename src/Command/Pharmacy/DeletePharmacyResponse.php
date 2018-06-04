@@ -2,7 +2,6 @@
 
 namespace Pilulka\CoreApiClient\Command\Pharmacy;
 
-use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
 
 class DeletePharmacyResponse implements Response

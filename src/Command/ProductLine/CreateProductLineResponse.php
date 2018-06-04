@@ -1,10 +1,10 @@
 <?php
 
-namespace Pilulka\CoreApiClient\Command\Pharmacy;
+namespace Pilulka\CoreApiClient\Command\ProductLine;
 
 use Pilulka\CoreApiClient\Response\Response;
 
-class CreatePharmacyResponse implements Response
+class CreateProductLineResponse implements Response
 {
     /**
      * @var object
@@ -28,6 +28,7 @@ class CreatePharmacyResponse implements Response
     {
         $result = new \stdClass();
         $result->result = $this->result();
+        $result->productLine = $this->objectResult->productLine;
         return $result;
     }
 }

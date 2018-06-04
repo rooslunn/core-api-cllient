@@ -2,7 +2,6 @@
 
 namespace Pilulka\CoreApiClient\Command\Order;
 
-use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
 
 class CreateOrderResponse implements Response
@@ -30,16 +29,13 @@ class CreateOrderResponse implements Response
         return $this->arrayResult;
     }
 
-    /**
-     * @return JsonModel
-     */
-    public function toModel(): JsonModel
+    public function toModel()
     {
-        return new JsonModel($this->arrayResult);
-//        $order = new Order($this->arrayResult);
-//        $order->items = array_map(function ($item) {
-//            return new OrderItem($item);
-//        }, $order->items);
-//        return $order;
+        /*return new JsonModel($this->arrayResult);
+        $order = new Order($this->arrayResult);
+        $order->items = array_map(function ($item) {
+            return new OrderItem($item);
+        }, $order->items);
+        return $order;*/
     }
 }

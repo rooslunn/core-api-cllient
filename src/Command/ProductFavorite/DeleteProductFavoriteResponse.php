@@ -1,21 +1,28 @@
 <?php
 
-namespace Pilulka\CoreApiClient\Command\Pharmacy;
+namespace Pilulka\CoreApiClient\Command\ProductFavorite;
 
 use Pilulka\CoreApiClient\Response\Response;
 
-class CreatePharmacyResponse implements Response
+class DeleteProductFavoriteResponse implements Response
 {
     /**
      * @var object
      */
     private $objectResult;
 
+    /**
+     * DeleteProductFavoriteResponse constructor.
+     * @param $arrayResult
+     */
     public function __construct($arrayResult)
     {
         $this->objectResult = $arrayResult;
     }
 
+    /**
+     * @return bool
+     */
     public function result(): bool
     {
         return $this->objectResult->result ?? false;

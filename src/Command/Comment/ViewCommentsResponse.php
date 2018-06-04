@@ -4,8 +4,6 @@ namespace Pilulka\CoreApiClient\Command\Comment;
 
 use JsonMapper;
 use Pilulka\CoreApiClient\Model\Comment\Comment;
-use Pilulka\CoreApiClient\Model\Comment\Comments;
-use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
 
 class ViewCommentsResponse implements Response

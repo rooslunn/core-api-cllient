@@ -2,7 +2,6 @@
 
 namespace Pilulka\CoreApiClient\Command\Comment;
 
-use Pilulka\CoreApiClient\Model\JsonModel;
 use Pilulka\CoreApiClient\Response\Response;
 
 class DeleteCommentResponse implements Response

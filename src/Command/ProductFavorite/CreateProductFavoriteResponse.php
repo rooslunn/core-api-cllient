@@ -1,10 +1,10 @@
 <?php
 
-namespace Pilulka\CoreApiClient\Command\Pharmacy;
+namespace Pilulka\CoreApiClient\Command\ProductFavorite;
 
 use Pilulka\CoreApiClient\Response\Response;
 
-class CreatePharmacyResponse implements Response
+class CreateProductFavoriteResponse implements Response
 {
     /**
      * @var object

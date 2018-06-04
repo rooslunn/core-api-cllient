@@ -33,11 +33,5 @@ class ViewPharmacyResponse implements Response
     {
         $mapper = new JsonMapper();
         return $mapper->map($this->objectResult, new Pharmacy());
-
-//        $pharmacy = new Pharmacy($this->objectResult);
-//        $pharmacy->location = new PharmacyLocation($pharmacy->location);
-//        $pharmacy->contact = new PharmacyContact($pharmacy->contact);
-//        $pharmacy->openingTime = new PharmacyOpeningTime($pharmacy->openingTime);
-//        return $pharmacy;
     }
 }
