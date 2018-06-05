@@ -18,7 +18,7 @@ class JsonArtisan
 
     public static function uncomment(string $json): string
     {
-        $commentPattern  = '/(\/\/[A-Za-z\s]+)$/m';
+        $commentPattern  = '/(\/\/[A-Za-z\s,]+)$/m';
         return preg_replace($commentPattern, '', $json);
     }
 
