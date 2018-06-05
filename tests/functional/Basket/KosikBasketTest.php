@@ -7,7 +7,7 @@ use Pilulka\CoreApiClient\JsonApiClient;
 use Pilulka\CoreApiClient\Model\Basket\Basket;
 use Pilulka\CoreApiClient\Model\Basket\BasketItem;
 use Pilulka\CoreApiClient\Model\Basket\BasketShipping;
-use Pilulka\CoreApiClient\Model\Query\BasketKosikQuery;
+use Pilulka\CoreApiClient\Request\Basket\BasketKosikRequestParams;
 
 class KosikBasketTest extends \Codeception\Test\Unit
 {
@@ -25,7 +25,7 @@ class KosikBasketTest extends \Codeception\Test\Unit
      */
     public function testKosikBasket(): void
     {
-        $query = (new BasketKosikQuery)
+        $query = (new BasketKosikRequestParams)
             ->setQuery('1234-RTFD-3456-FGW4-F5E4', 10)
             ->setFields([])
             ->setFrom(0)

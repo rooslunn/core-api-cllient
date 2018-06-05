@@ -2,19 +2,19 @@
 
 namespace Pilulka\CoreApiClient\Command\Basket;
 
-use Pilulka\CoreApiClient\Model\Query\BasketKosikQuery;
+use Pilulka\CoreApiClient\Request\Basket\BasketKosikRequestParams;
 use Pilulka\CoreApiClient\Request\{Http, Request};
 
 class KosikBasket implements Request
 {
     private const URI = '/basket';
 
-    /** @var BasketKosikQuery */
-    private $kosikQuery;
+    /** @var BasketKosikRequestParams */
+    private $requestParams;
 
-    public function __construct(BasketKosikQuery $kosikQuery)
+    public function __construct(BasketKosikRequestParams $requestParams)
     {
-        $this->kosikQuery = $kosikQuery;
+        $this->requestParams = $requestParams;
     }
     
     /**
@@ -38,6 +38,6 @@ class KosikBasket implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode($this->kosikQuery);
+        return \GuzzleHttp\json_encode($this->requestParams);
     }
 }
