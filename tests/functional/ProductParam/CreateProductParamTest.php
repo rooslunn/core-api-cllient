@@ -21,7 +21,7 @@ class CreateProductParamTest extends Unit
     /**
      * @throws \Exception
      */
-    public function testCreateProductLine(): void
+    public function testCreateProductParam(): void
     {
         $productParam = (new ProductParam())->setName('test')->setId(12)->setValue('betadine')->setParamGroupId(8);
 

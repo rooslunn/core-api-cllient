@@ -21,7 +21,7 @@ class ViewProductParamsTest extends Unit
     /**
      * @throws \Exception
      */
-    public function testViewProductLines(): void
+    public function testViewProductParams(): void
     {
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new ViewProductParams());
