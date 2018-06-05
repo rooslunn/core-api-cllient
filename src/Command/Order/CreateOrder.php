@@ -3,12 +3,11 @@
 namespace Pilulka\CoreApiClient\Command\Order;
 
 use Pilulka\CoreApiClient\Model\Order\Order;
-use Pilulka\CoreApiClient\Request\Http;
-use Pilulka\CoreApiClient\Request\Request;
+use Pilulka\CoreApiClient\Request\{Http, Request};
 
 class CreateOrder implements Request
 {
-    private const uri = '/order';
+    private const URI = '/order';
 
     /** @var Order */
     private $order;
@@ -17,6 +16,7 @@ class CreateOrder implements Request
     {
         $this->order = $order;
     }
+    
     /**
      * @return string
      */
@@ -30,7 +30,7 @@ class CreateOrder implements Request
      */
     public function getUrl(): string
     {
-        return self::uri;
+        return self::URI;
     }
 
     /**

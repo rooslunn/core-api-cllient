@@ -7,35 +7,33 @@ use Pilulka\CoreApiClient\Response\Response;
 class CreateOrderResponse implements Response
 {
     /**
-     * @var array
+     * @var object
      */
-    private $arrayResult;
+    private $objectResult;
 
-    public function __construct(array $arrayResult)
+    public function __construct($arrayResult)
     {
-        $this->arrayResult = $arrayResult;
+        $this->objectResult = $arrayResult;
     }
 
     public function result(): bool
     {
-        return $this->arrayResult['result'] ?? false;
+        return $this->objectResult->result ?? false;
     }
 
     /**
-     * @return array
+     * @return object
      */
-    public function toObject(): array
-    {
-        return $this->arrayResult;
-    }
-
     public function toModel()
     {
-        /*return new JsonModel($this->arrayResult);
-        $order = new Order($this->arrayResult);
-        $order->items = array_map(function ($item) {
-            return new OrderItem($item);
-        }, $order->items);
-        return $order;*/
+        $result = new \stdClass();
+        $result->result = $this->result();
+
+        if ($result->result) {
+            $result->id = $this->objectResult->id;
+            $result->orderNum = $this->objectResult->orderNum;
+        }
+
+        return $result;
     }
 }
