@@ -28,8 +28,7 @@ class ViewOrderTest extends \Codeception\Test\Unit
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new ViewOrder($orderId));
 
-        $this->assertTrue($response->result);
-        $this->assertInstanceOf(Order::class, $response->order);
-        $this->assertInstanceOf(OrderItem::class, $response->order->items[0]);
+        $this->assertInstanceOf(Order::class, $response);
+        $this->assertInstanceOf(OrderItem::class, $response->items[0]);
     }
 }

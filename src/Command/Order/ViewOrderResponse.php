@@ -31,12 +31,11 @@ class ViewOrderResponse implements Response
     public function toModel()
     {
         $result = new \stdClass();
-        $result->result = $this->result();
 
-        if ($result->result) {
+        if ($this->result()) {
             /** @var Order order */
-            $result->order = JsonArtisan::jsonMap([$this->objectResult], Order::class)[0];
-            $result->order->items = JsonArtisan::jsonMap($this->objectResult->items, OrderItem::class);
+            $result = JsonArtisan::jsonMap([$this->objectResult], Order::class)[0];
+            $result->items = JsonArtisan::jsonMap($this->objectResult->items, OrderItem::class);
         }
 
         return $result;
