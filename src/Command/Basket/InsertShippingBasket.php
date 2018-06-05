@@ -3,7 +3,9 @@
 namespace Pilulka\CoreApiClient\Command\Basket;
 
 use Pilulka\CoreApiClient\Model\Basket\Basket;
-use Pilulka\CoreApiClient\Request\{Http, Request};
+use Pilulka\CoreApiClient\Request\{
+    Basket\InsertShippingRequestParams, Http, Request
+};
 
 class InsertShippingBasket implements Request
 {
@@ -12,9 +14,13 @@ class InsertShippingBasket implements Request
     /** @var string */
     private $uid;
 
-    public function __construct(string $uid)
+    /** @var InsertShippingRequestParams */
+    private $requestParams;
+
+    public function __construct(string $uid, InsertShippingRequestParams $params)
     {
         $this->uid = $uid;
+        $this->requestParams = $params;
     }
     
     /**
@@ -38,6 +44,6 @@ class InsertShippingBasket implements Request
      */
     public function getBody(): string
     {
-        return '';
+        return \GuzzleHttp\json_encode($this->requestParams);
     }
 }
