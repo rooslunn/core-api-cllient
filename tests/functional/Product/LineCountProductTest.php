@@ -22,7 +22,7 @@ class LineCountProductTest extends \Codeception\Test\Unit
      */
     public function testLineCountProduct(): void
     {
-        $query = (new Query())->setQuery('query')->setCategoryId(1)->setBrandId(1);
+        $query = (new Query())->setQuery('query')->setCategoryId([1])->setBrandId([1]);
 
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new LineCountProduct($query));

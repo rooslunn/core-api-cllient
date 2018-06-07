@@ -3,25 +3,34 @@
 
 namespace Pilulka\CoreApiClient\Model\Query;
 
-
 class Query
 {
     /** @var string */
     public $query;
 
-    /** @var int */
+    /**
+     * @var array
+     */
     public $categoryId;
 
-    /** @var int */
+    /**
+     * @var array
+     */
     public $brandId;
 
-    /** @var int */
+    /**
+     * @var array
+     */
     public $productLine;
 
-    /** @var int */
+    /**
+     * @var array
+     */
     public $paramId;
 
-    /** @var int */
+    /**
+     * @var array
+     */
     public $supplierId;
 
     /** @var bool */
@@ -49,90 +58,90 @@ class Query
     }
 
     /**
-     * @return int
+     * @return array
      */
-    public function getCategoryId(): int
+    public function getCategoryId(): array
     {
         return $this->categoryId;
     }
 
     /**
-     * @param int $categoryId
+     * @param array $categoryId
      * @return Query
      */
-    public function setCategoryId(int $categoryId): Query
+    public function setCategoryId(array $categoryId): Query
     {
         $this->categoryId = $categoryId;
         return $this;
     }
 
     /**
-     * @return int
+     * @return array
      */
-    public function getBrandId(): int
+    public function getBrandId(): array
     {
         return $this->brandId;
     }
 
     /**
-     * @param int $brandId
+     * @param array $brandId
      * @return Query
      */
-    public function setBrandId(int $brandId): Query
+    public function setBrandId(array $brandId): Query
     {
         $this->brandId = $brandId;
         return $this;
     }
 
     /**
-     * @return int
+     * @return array
      */
-    public function getProductLine(): int
+    public function getProductLine(): array
     {
         return $this->productLine;
     }
 
     /**
-     * @param int $productLine
+     * @param array $productLine
      * @return Query
      */
-    public function setProductLine(int $productLine): Query
+    public function setProductLine(array $productLine): Query
     {
         $this->productLine = $productLine;
         return $this;
     }
 
     /**
-     * @return int
+     * @return array
      */
-    public function getParamId(): int
+    public function getParamId(): array
     {
         return $this->paramId;
     }
 
     /**
-     * @param int $paramId
+     * @param array $paramId
      * @return Query
      */
-    public function setParamId(int $paramId): Query
+    public function setParamId(array $paramId): Query
     {
         $this->paramId = $paramId;
         return $this;
     }
 
     /**
-     * @return int
+     * @return array
      */
-    public function getSupplierId(): int
+    public function getSupplierId(): array
     {
         return $this->supplierId;
     }
 
     /**
-     * @param int $supplierId
+     * @param array $supplierId
      * @return Query
      */
-    public function setSupplierId(int $supplierId): Query
+    public function setSupplierId(array $supplierId): Query
     {
         $this->supplierId = $supplierId;
         return $this;
