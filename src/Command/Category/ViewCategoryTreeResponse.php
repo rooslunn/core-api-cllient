@@ -32,13 +32,7 @@ class ViewCategoryTreeResponse implements Response
      */
     public function toModel(): array
     {
-        $result = [];
-
-        foreach ($this->objectResult->categories ?? [] as $category) {
-            $result[] = $this->categories($category);
-        }
-
-        return $result;
+        return $this->categories($this->objectResult ?? []);
     }
 
     /**
@@ -50,8 +44,9 @@ class ViewCategoryTreeResponse implements Response
         $result = [];
 
         foreach ($categories ?? [] as $category) {
+            /** @var Category $cat */
             $cat = $this->mapper->map($category, new Category());
-            $cat->categories = $this->categories($category->categories);
+            $cat->setCategories($this->categories($category->categories));
             $result[] = $cat;
 
         }
