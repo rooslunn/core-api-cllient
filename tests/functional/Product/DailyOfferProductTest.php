@@ -22,10 +22,8 @@ class DailyOfferProductTest extends \Codeception\Test\Unit
      */
     public function testDailyOfferProduct(): void
     {
-        $product = (new Product())->setId(1);
-
         $response = (new JsonApiClient(CORE_API_URL_BASE))
-            ->send(new DailyOfferProduct($product));
+            ->send(new DailyOfferProduct());
 
         $this->assertInstanceOf(Product::class, $response[0]);
     }
