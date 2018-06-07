@@ -38,6 +38,9 @@ class Category
     /** @var CategoryFrontendArticle[] */
     private $frontendArticles;
 
+    /** @var Category[] */
+    private $categories;
+
     /**
      * @return int
      */
@@ -233,4 +236,23 @@ class Category
         $this->frontendArticles = $frontendArticles;
         return $this;
     }
+
+    /**
+     * @return Category[]
+     */
+    public function getCategories(): array
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param Category[] $categories
+     * @return Category
+     */
+    public function setCategories(array $categories): Category
+    {
+        $this->categories = $categories;
+        return $this;
+    }
+
 }
