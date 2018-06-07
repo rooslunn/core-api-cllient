@@ -23,7 +23,7 @@ class PriceExtremesProductTest extends \Codeception\Test\Unit
      */
     public function testPriceExtremesProduct(): void
     {
-        $query = (new Query())->setQuery('query')->setBrandId(1)->setCategoryId(1);
+        $query = (new Query())->setQuery('query')->setBrandId([1])->setCategoryId([1]);
 
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new PriceExtremesProduct($query));

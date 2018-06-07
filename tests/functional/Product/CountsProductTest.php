@@ -23,7 +23,7 @@ class CountsProductTest extends \Codeception\Test\Unit
      */
     public function testCountsProduct(): void
     {
-        $query = (new Query())->setBrandId(13)->setInStockOnly(true);
+        $query = (new Query())->setBrandId([13])->setInStockOnly(true);
 
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new CountsProduct($query));
