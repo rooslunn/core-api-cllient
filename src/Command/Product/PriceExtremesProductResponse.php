@@ -26,8 +26,9 @@ class PriceExtremesProductResponse implements Response
      */
     public function toModel()
     {
-        $result = (object) $this->objectResult;
+        $result = new \stdClass();
         $result->result = $this->result();
+        $result->data = $this->objectResult;
         return $result;
     }
 }
