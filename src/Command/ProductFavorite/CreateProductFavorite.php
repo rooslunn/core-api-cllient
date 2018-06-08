@@ -45,6 +45,13 @@ class CreateProductFavorite implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode($this->productFavorites);
+        $body = [];
+        foreach ($this->productFavorites as $item) {
+            $body[] = [
+                'userId' => $item->getUserId(),
+                'productId' => $item->getProductId(),
+            ];
+        }
+        return \GuzzleHttp\json_encode($body);
     }
 }
