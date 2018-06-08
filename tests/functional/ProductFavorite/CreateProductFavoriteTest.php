@@ -26,7 +26,7 @@ class CreateProductFavoriteTest extends Unit
         $productFavorite = (new ProductFavorite())->setUserId(123)->setProductId(321);
 
         $response = (new JsonApiClient(CORE_API_URL_BASE))
-            ->send(new CreateProductFavorite($productFavorite));
+            ->send(new CreateProductFavorite([$productFavorite]));
 
         $this->assertTrue($response->result);
     }

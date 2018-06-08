@@ -11,17 +11,17 @@ class CreateProductFavorite implements Request
     private const URI = '/favorite';
 
     /**
-     * @var ProductFavorite
+     * @var ProductFavorite[]
      */
-    private $productFavorite;
+    private $productFavorites;
 
     /**
      * CreateProductFavorite constructor.
-     * @param ProductFavorite $productFavorite
+     * @param ProductFavorite[] $productFavorites
      */
-    public function __construct(ProductFavorite $productFavorite)
+    public function __construct(array $productFavorites)
     {
-        $this->productFavorite = $productFavorite;
+        $this->productFavorites = $productFavorites;
     }
 
     /**
@@ -45,6 +45,6 @@ class CreateProductFavorite implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode($this->productFavorite);
+        return \GuzzleHttp\json_encode($this->productFavorites);
     }
 }
