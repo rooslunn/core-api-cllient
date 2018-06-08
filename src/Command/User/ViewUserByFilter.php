@@ -46,6 +46,13 @@ class ViewUserByFilter implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode($this->query);
+        return \GuzzleHttp\json_encode([
+            'User' => [
+                'query' => $this->query->getQuery(),
+                'fields' => $this->query->getFields(),
+                'size' => $this->query->getSize(),
+                'sort' => $this->query->getSort()
+            ]
+        ]);
     }
 }

@@ -45,6 +45,17 @@ class CreateSupplier implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode($this->supplier);
+        $data = [
+            'id' => $this->supplier->getId(),
+            'name' => $this->supplier->getName(),
+            'logo' => $this->supplier->getLogo(),
+            'content' => [
+                'long' => $this->supplier->getContent()->getLong(),
+            ],
+            'website' => $this->supplier->getWebsite(),
+            'manufacturerId' => $this->supplier->getManufacturerId(),
+        ];
+
+        return \GuzzleHttp\json_encode($data);
     }
 }
