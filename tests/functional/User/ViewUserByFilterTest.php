@@ -21,6 +21,7 @@ class ViewUserByFilterTest extends Unit
     }
 
     /**
+     * @group User
      * @throws \Exception
      */
     public function testViewUserByFilter(): void

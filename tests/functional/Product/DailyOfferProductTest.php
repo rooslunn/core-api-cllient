@@ -17,8 +17,9 @@ class DailyOfferProductTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
+    /**
      * @group Product
+     * @throws \Exception
      */
     public function testDailyOfferProduct(): void
     {

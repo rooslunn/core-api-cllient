@@ -21,8 +21,9 @@ class FilterProductTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
+    /**
      * @group Product
+     * @throws \Exception
      */
     public function testFilterProduct(): void
     {
