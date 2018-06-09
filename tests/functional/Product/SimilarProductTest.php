@@ -17,13 +17,14 @@ class SimilarProductTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
+    /**
      * @group Product
+     * @throws \Exception
      */
     public function testSimilarProduct(): void
     {
         $response = (new JsonApiClient(CORE_API_URL_BASE))
-            ->send(new SimilarProduct($id=1, $categoryIds=[1,2,3], $size=20));
+            ->send(new SimilarProduct($id = 1, $categoryIds = [1, 2, 3], $size = 20));
 
         $this->assertTrue($response->result);
         $this->assertInstanceOf(Product::class, $response->products[0]);

@@ -18,8 +18,9 @@ class ByIdsProductTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
+    /**
      * @group Product
+     * @throws \Exception
      */
     public function testByIdsProduct(): void
     {

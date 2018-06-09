@@ -17,8 +17,9 @@ class ViewProductTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
+    /**
      * @group Product
+     * @throws \Exception
      */
     public function testViewProduct(): void
     {

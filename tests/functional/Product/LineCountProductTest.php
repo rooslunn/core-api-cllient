@@ -17,8 +17,9 @@ class LineCountProductTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
+    /**
      * @group Product
+     * @throws \Exception
      */
     public function testLineCountProduct(): void
     {

@@ -19,6 +19,7 @@ class ViewUserByEmailPasswordTest extends Unit
     }
 
     /**
+     * @group User
      * @throws \Exception
      */
     public function testViewUserByEmailPassword(): void
