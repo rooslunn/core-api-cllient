@@ -34,10 +34,13 @@ class ViewZasilkovnaListTest extends Unit
         $response = (new JsonApiClient(CORE_API_URL_BASE))
             ->send(new ViewZasilkovnaList());
 
-        $this->assertEquals(20, $response['total']);
-        $this->assertInstanceOf(Zasilkovna::class, $response['zasilkovna'][0]);
-        $this->assertInstanceOf(Location::class, $response['zasilkovna'][0]->getLocation());
-        $this->assertInstanceOf(ZasilkovnaOpeningHours::class, $response['zasilkovna'][0]->getOpeningHours());
-        $this->assertInstanceOf(ZasilkovnaOpeningTime::class, $response['zasilkovna'][0]->getOpeningTime());
+        $this->assertInternalType('array', $response);
+        $this->assertTrue(count($response) > 0);
+
+        $zasilkovnaToTest = $response[0];
+        $this->assertInstanceOf(Zasilkovna::class, $zasilkovnaToTest);
+        $this->assertInstanceOf(Location::class, $zasilkovnaToTest->getLocation());
+        $this->assertInstanceOf(ZasilkovnaOpeningHours::class, $zasilkovnaToTest->getOpeningHours());
+        $this->assertInstanceOf(ZasilkovnaOpeningTime::class, $zasilkovnaToTest->getOpeningTime());
     }
 }

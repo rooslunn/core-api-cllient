@@ -2,6 +2,7 @@
 
 namespace Pilulka\CoreApiClient\Command\Zasilkovna;
 
+use Pilulka\CoreApiClient\JsonArtisan;
 use Pilulka\CoreApiClient\Model\Zasilkovna\Zasilkovna;
 use Pilulka\CoreApiClient\Response\Response;
 
@@ -30,19 +31,12 @@ class ViewZasilkovnaListResponse implements Response
     }
 
     /**
-     * @return object
+     * @return array
      * @throws \JsonMapper_Exception
      */
     public function toModel()
     {
-        $return['total'] = $this->objectResult->total;
-
-        $mapper = new \JsonMapper();
-
-        foreach ($this->objectResult->zasilkovna ?? [] as $item) {
-            $return['zasilkovna'][] = $mapper->map($item, new Zasilkovna());
-        }
-
-        return $return;
+        $zasilkovnas = JsonArtisan::jsonMap($this->objectResult->zasilkovna, Zasilkovna::class);
+        return $zasilkovnas;
     }
 }

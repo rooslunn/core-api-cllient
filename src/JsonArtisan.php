@@ -33,7 +33,7 @@ class JsonArtisan
         $result = [];
         $mapper = new \JsonMapper();
 
-        foreach ($items as $item) {
+        foreach ($items ?? [] as $item) {
             $result[] = $mapper->map($item, new $toClass);
         }
 
