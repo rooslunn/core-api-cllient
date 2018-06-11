@@ -543,7 +543,7 @@ class Zasilkovna
     /**
      * @return \DateTime
      */
-    public function getUpdatedAt(): \DateTime
+    public function getUpdatedAt(): ?\DateTime
     {
         return $this->updatedAt;
     }
