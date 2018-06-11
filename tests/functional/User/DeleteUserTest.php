@@ -21,6 +21,7 @@ class DeleteUserTest extends Unit
     }
 
     /**
+     * @group User
      * @throws \Exception
      */
     public function testDeleteUser(): void

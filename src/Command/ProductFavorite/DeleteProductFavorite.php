@@ -45,6 +45,9 @@ class DeleteProductFavorite implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode($this->productFavorite);
+        return \GuzzleHttp\json_encode([
+            'userId' => $this->productFavorite->getUserId(),
+            'productId' => $this->productFavorite->getProductId(),
+        ]);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Pilulka\CoreApiClient\Command\Product;
 
+use Pilulka\CoreApiClient\DataTransformer\Product\ProductArrayTransformer;
 use Pilulka\CoreApiClient\Model\Product\Product;
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
@@ -39,6 +40,8 @@ class CreateProduct implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode($this->product);
+        $data = (new ProductArrayTransformer($this->product))->transform();
+
+        return \GuzzleHttp\json_encode($data);
     }
 }

@@ -1,11 +1,11 @@
 <?php
+declare(strict_types=1);
 
 namespace Pilulka\CoreApiClient\Command\Product;
 
-use Pilulka\CoreApiClient\Model\Product\Product;
 use Pilulka\CoreApiClient\Response\Response;
 
-class ViewProductResponse implements Response
+class ViewProductShippingResponse implements Response
 {
     /**
      * @var object
@@ -19,7 +19,7 @@ class ViewProductResponse implements Response
 
     public function result(): bool
     {
-        return $this->objectResult->result ?? false;
+        return true;
     }
 
     /**
@@ -28,6 +28,6 @@ class ViewProductResponse implements Response
      */
     public function toModel()
     {
-        return (new \JsonMapper())->map($this->objectResult, new Product());
+        return $this->objectResult;
     }
 }

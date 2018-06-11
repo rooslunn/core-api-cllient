@@ -50,12 +50,14 @@ class CreateCategory implements Request
             'name' => $category->getName(),
             'parentId' => $category->getParentId(),
             'position' => $category->getPosition(),
-            'content' => $category->getContent(),
+            'content' => [
+                'long' => $category->getContent()->getLong()
+            ],
             'isActive' => $category->isActive(),
             'isDeleted' => $category->isDeleted(),
             'image' => $category->getImage(),
             'inMainMenu' => $category->isInMainMenu(),
-            'filtes' => $category->getFilters(),
+            'filters' => $category->getFilters(),
         ];
         return \GuzzleHttp\json_encode($arrForJson);
     }

@@ -23,7 +23,7 @@
     "autoload-dev": {
         "files": ["tests/_bootstrap.php"],
         "psr-4": {
-            "Pilulka\\CoreApi\\Client\\Tests\\": "tests/"
+            "Pilulka\\CoreApiClient\\Tests\\": "tests/"
         }
     },
     "require-dev": {

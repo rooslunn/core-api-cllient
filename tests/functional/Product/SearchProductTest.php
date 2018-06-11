@@ -17,8 +17,9 @@ class SearchProductTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
+    /**
      * @group Product
+     * @throws \Exception
      */
     public function testSearchProduct(): void
     {

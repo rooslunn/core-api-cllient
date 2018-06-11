@@ -2,9 +2,8 @@
 
 namespace Product;
 
-use Pilulka\CoreApiClient\Command\Product\ViewProduct;
+use Pilulka\CoreApiClient\Command\Product\ViewProductShipping;
 use Pilulka\CoreApiClient\JsonApiClient;
-use Pilulka\CoreApiClient\Model\Product\Product;
 
 class ViewProductTest extends \Codeception\Test\Unit
 {
@@ -17,17 +16,16 @@ class ViewProductTest extends \Codeception\Test\Unit
     {
     }
 
-    /**
+    /*
      * @group Product
-     * @throws \Exception
      */
-    public function testViewProduct(): void
+    public function testViewProductShippiong(): void
     {
         $id = 1;
 
         $response = (new JsonApiClient(CORE_API_URL_BASE))
-            ->send(new ViewProduct($id));
+            ->send(new ViewProductShipping($id));
 
-        $this->assertInstanceOf(Product::class, $response);
+        $this->assertFalse($response->is_pilulka_car);
     }
 }

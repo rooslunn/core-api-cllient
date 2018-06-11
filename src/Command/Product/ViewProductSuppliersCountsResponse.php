@@ -1,12 +1,14 @@
 <?php
 
+
 namespace Pilulka\CoreApiClient\Command\Product;
 
-use Pilulka\CoreApiClient\Model\Product\Product;
+
 use Pilulka\CoreApiClient\Response\Response;
 
-class ViewProductResponse implements Response
+class ViewProductSuppliersCountsResponse implements Response
 {
+
     /**
      * @var object
      */
@@ -17,17 +19,19 @@ class ViewProductResponse implements Response
         $this->objectResult = $arrayResult;
     }
 
+    /**
+     * @return bool
+     */
     public function result(): bool
     {
-        return $this->objectResult->result ?? false;
+        return $this->objectResult ? true : false;
     }
 
     /**
      * @return object
-     * @throws \JsonMapper_Exception
      */
     public function toModel()
     {
-        return (new \JsonMapper())->map($this->objectResult, new Product());
+        return $this->objectResult;
     }
 }
