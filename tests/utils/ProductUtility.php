@@ -30,7 +30,7 @@ class ProductUtility
         $product->setRate(5);
         $product->setImage('');
         $product->setAdvantage(1);
-        $product->setPackSize(2);
+        $product->setPackSize('2');
         $product->setStatus(1);
         $product->setUpdatedAt(new \DateTime());
         $product->setRelations([1 => [1]]);
