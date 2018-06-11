@@ -18,8 +18,9 @@ class PriceExtremesProductTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
+    /**
      * @group Product
+     * @throws \Exception
      */
     public function testPriceExtremesProduct(): void
     {

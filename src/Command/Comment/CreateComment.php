@@ -40,6 +40,16 @@ class CreateComment implements Request
     {
         return \GuzzleHttp\json_encode([
             'id' => $this->comment->getId(),
+            'type' => $this->comment->getType(),
+            'objectId' => $this->comment->getObjectId(),
+            'userId' => $this->comment->getUserId(),
+            'name' => $this->comment->getName(),
+            'email' => $this->comment->getEmail(),
+            'content' => [
+                'long' => $this->comment->getContent()->getLong(),
+            ],
+            'rating' => $this->comment->getRating(),
+            'ip' => $this->comment->getIp(),
         ]);
     }
 }

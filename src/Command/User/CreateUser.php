@@ -2,6 +2,7 @@
 
 namespace Pilulka\CoreApiClient\Command\User;
 
+use Pilulka\CoreApiClient\DataTransformer\User\UserArrayTransformer;
 use Pilulka\CoreApiClient\Model\User\User;
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
@@ -44,6 +45,8 @@ class CreateUser implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode($this->user);
+        $data = (new UserArrayTransformer($this->user))->transform();
+
+        return \GuzzleHttp\json_encode($data);
     }
 }

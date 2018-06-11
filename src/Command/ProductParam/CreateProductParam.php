@@ -45,6 +45,11 @@ class CreateProductParam implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode($this->productParam);
+        return \GuzzleHttp\json_encode([
+            'id' => $this->productParam->getId(),
+            'name' => $this->productParam->getName(),
+            'value' => $this->productParam->getValue(),
+            'paramGroupId' => $this->productParam->getParamGroupId(),
+        ]);
     }
 }

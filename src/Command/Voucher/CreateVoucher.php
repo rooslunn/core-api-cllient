@@ -45,6 +45,22 @@ class CreateVoucher implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode($this->voucher);
+        return \GuzzleHttp\json_encode([
+            'id' => $this->voucher->getId(),
+            'name' => $this->voucher->getName(),
+            'code' => $this->voucher->getCode(),
+            'voucherType' => $this->voucher->getVoucherType(),
+            'limitType' => $this->voucher->getLimitType(),
+            'saleType' => $this->voucher->getSaleType(),
+            'minOrderAmount' => $this->voucher->getMinOrderAmount(),
+            'voucherValue' => $this->voucher->getVoucherValue(),
+            'validFrom' => $this->voucher->getValidFrom()->getTimestamp(),
+            'validTo' => $this->voucher->getValidTo()->getTimestamp(),
+            'validProducts' => $this->voucher->getValidProducts(),
+            'validBrands' => $this->voucher->getValidBrands(),
+            'validCategories' => $this->voucher->getValidCategories(),
+            'validManufacturers' => $this->voucher->getValidManufacturers(),
+            'validDeliveryMethods' => $this->voucher->getValidDeliveryMethods()
+        ]);
     }
 }

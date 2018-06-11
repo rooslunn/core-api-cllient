@@ -40,6 +40,32 @@ class CreateShipping implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode($this->shipping);
+        $payItems = [];
+        $pays = $this->shipping->getPays();
+        foreach ($pays as $pay) {
+            $payItems[] = [
+                'id' => $pay->getId(),
+                'method' => $pay->getMethod(),
+                'title' => $pay->getTitle(),
+                'fee' => $pay->getFee(),
+                'sort' => $pay->getSort()
+            ];
+        }
+
+        $data = [
+            'id' => $this->shipping->getId(),
+            'title' => $this->shipping->getTitle(),
+            'content' => [
+                'long' => $this->shipping->getContent()->getLong(),
+                'short' => $this->shipping->getContent()->getShort()
+            ],
+            'sort' => $this->shipping->getSort(),
+            'type' => $this->shipping->getType(),
+            'fee' => $this->shipping->getFee(),
+            'isActive' => $this->shipping->isActive(),
+            'pays' => $payItems
+        ];
+
+        return \GuzzleHttp\json_encode($data);
     }
 }

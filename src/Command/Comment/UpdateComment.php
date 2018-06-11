@@ -46,7 +46,9 @@ class UpdateComment implements Request
             'userId' => $comment->getUserId(),
             'name' => $comment->getName(),
             'email' => $comment->getEmail(),
-            'content' => $comment->getContent(),
+            'content' => [
+                'long' => $this->comment->getContent()->getLong(),
+            ],
             'rating' => $comment->getRating(),
             'ip' => $comment->getId(),
         ]);

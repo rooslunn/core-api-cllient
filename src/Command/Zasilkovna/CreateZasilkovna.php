@@ -2,6 +2,7 @@
 
 namespace Pilulka\CoreApiClient\Command\Zasilkovna;
 
+use Pilulka\CoreApiClient\DataTransformer\Zasilkovna\ZasilkovnaArrayTransformer;
 use Pilulka\CoreApiClient\Model\Zasilkovna\Zasilkovna;
 use Pilulka\CoreApiClient\Request\Http;
 use Pilulka\CoreApiClient\Request\Request;
@@ -45,6 +46,7 @@ class CreateZasilkovna implements Request
      */
     public function getBody(): string
     {
-        return \GuzzleHttp\json_encode($this->zasilkovna);
+        $data = (new ZasilkovnaArrayTransformer($this->zasilkovna))->transform();
+        return \GuzzleHttp\json_encode($data);
     }
 }

@@ -16,8 +16,9 @@ class BrandsCountProductTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
+    /**
      * @group Product
+     * @throws \Exception
      */
     public function testBrandsCountProduct(): void
     {
