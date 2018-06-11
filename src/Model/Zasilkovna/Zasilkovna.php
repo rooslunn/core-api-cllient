@@ -365,7 +365,7 @@ class Zasilkovna
      */
     public function getPhotos(): array
     {
-        return $this->photos;
+        return $this->photos ?? [];
     }
 
     /**
