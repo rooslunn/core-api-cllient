@@ -31,12 +31,13 @@ class ViewZasilkovnaListResponse implements Response
     }
 
     /**
-     * @return array
+     * @return object
      * @throws \JsonMapper_Exception
      */
     public function toModel()
     {
-        $zasilkovnas = JsonArtisan::jsonMap($this->objectResult->zasilkovna, Zasilkovna::class);
-        return $zasilkovnas;
+        $result = (object) $this->objectResult;
+        $result->zasilkovna = JsonArtisan::jsonMap($result->zasilkovna, Zasilkovna::class);
+        return $result;
     }
 }
