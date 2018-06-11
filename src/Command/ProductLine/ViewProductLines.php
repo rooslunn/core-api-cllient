@@ -33,7 +33,7 @@ class ViewProductLines implements Request
      */
     public function getUrl(): string
     {
-        return self::URI . '?' . http_build_query(['ids' => $this->ids]);
+        return self::URI . '?' . http_build_query(['id' => $this->ids]);
     }
 
     /**
