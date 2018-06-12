@@ -235,9 +235,9 @@ class Zasilkovna
     }
 
     /**
-     * @return bool
+     * @return bool|null
      */
-    public function isWheelchairAccessible(): bool
+    public function isWheelchairAccessible(): ?bool
     {
         return $this->wheelchairAccessible;
     }
@@ -246,7 +246,7 @@ class Zasilkovna
      * @param bool $wheelchairAccessible
      * @return Zasilkovna
      */
-    public function setIsWheelchairAccessible(bool $wheelchairAccessible): Zasilkovna
+    public function setIsWheelchairAccessible(?bool $wheelchairAccessible): Zasilkovna
     {
         $this->wheelchairAccessible = $wheelchairAccessible;
         return $this;
