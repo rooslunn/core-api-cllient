@@ -43,4 +43,23 @@ class JsonArtisan
 
         return $result;
     }
+
+    /**
+     * @param iterable $items
+     * @param string $toClass
+     * @param array $dateFields
+     * @return array
+     * @throws \JsonMapper_Exception
+     */
+    public static function jsonMapAndTimestamps(array $items, string $toClass, array $dateFields = []): array
+    {
+        return self::jsonMap($items, $toClass, function ($item) use ($dateFields) {
+            foreach ($dateFields as $field) {
+                if (isset($item->{$field}) && ! $item->{$field} instanceof \DateTime) {
+                    $item->{$field} = (new \DateTime)->setTimestamp($item->{$field});
+                }
+            }
+            return $item;
+        });
+    }
 }

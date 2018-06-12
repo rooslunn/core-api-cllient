@@ -2,6 +2,7 @@
 
 namespace Pilulka\CoreApiClient\Command\Zasilkovna;
 
+use Pilulka\CoreApiClient\JsonArtisan;
 use Pilulka\CoreApiClient\Model\Zasilkovna\Zasilkovna;
 use Pilulka\CoreApiClient\Response\Response;
 
@@ -35,10 +36,8 @@ class ViewZasilkovnaResponse implements Response
      */
     public function toModel()
     {
-        $mapper = new \JsonMapper();
-
-        $return = $mapper->map($this->objectResult, new Zasilkovna());
-
-        return $return;
+        $zasilkovna = JsonArtisan::jsonMapAndTimestamps(
+            [$this->objectResult], Zasilkovna::class, ['createdAt', 'updatedAt'])[0];
+        return $zasilkovna;
     }
 }
