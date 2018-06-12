@@ -20,6 +20,9 @@ class ShippingPayMethod
     /** @var  int */
     private $sort;
 
+    /** @var string|null */
+    private $description;
+
     /**
      * @return int
      */
@@ -109,4 +112,23 @@ class ShippingPayMethod
         $this->sort = $sort;
         return $this;
     }
+
+    /**
+     * @return null|string
+     */
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param null|string $description
+     * @return ShippingPayMethod
+     */
+    public function setDescription(?string $description): ShippingPayMethod
+    {
+        $this->description = $description;
+        return $this;
+    }
+    
 }
