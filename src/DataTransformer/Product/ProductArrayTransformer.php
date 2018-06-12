@@ -44,7 +44,7 @@ class ProductArrayTransformer implements DataTransformer
             'advantage' => $this->product->getAdvantage(),
             'packSize' => $this->product->getPackSize(),
             'status' => $this->product->getStatus(),
-            'updatedAt' => $this->product->getUpdatedAt(),
+            'updatedAt' => $this->product->getUpdatedAt()->getTimestamp(),
             'attributes' => [
                 'ean' => $this->product->getAttributes()->getEan(),
                 'sukl' => $this->product->getAttributes()->getSukl(),
