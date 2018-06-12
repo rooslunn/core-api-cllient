@@ -8,19 +8,26 @@ use Pilulka\CoreApiClient\Request\Request;
 
 class ViewProductShipping implements Request
 {
-    private const URI = '/product_shipping/';
-    /**
-     * @var int
-     */
-    private $productId;
+    private const URI = '/product_shipping?';
+
+    /** @var array|null */
+    private $productIds;
 
     /**
      * ViewProductShipping constructor.
-     * @param int $productId
+     * @param array|null $productIds
      */
-    public function __construct(int $productId)
+    public function __construct(?array $productIds)
     {
-        $this->productId = $productId;
+        $this->productIds = $productIds;
+    }
+
+    /**
+     * @return array|null
+     */
+    public function getProductIds(): ?array
+    {
+        return $this->productIds;
     }
 
     /**
@@ -36,7 +43,7 @@ class ViewProductShipping implements Request
      */
     public function getUrl(): string
     {
-        return self::URI . $this->productId;
+        return self::URI . http_build_query(['id' => $this->productIds]);
     }
 
     /**
