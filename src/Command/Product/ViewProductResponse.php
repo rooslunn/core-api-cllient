@@ -2,6 +2,7 @@
 
 namespace Pilulka\CoreApiClient\Command\Product;
 
+use Pilulka\CoreApiClient\JsonArtisan;
 use Pilulka\CoreApiClient\Model\Product\Product;
 use Pilulka\CoreApiClient\Response\Response;
 
@@ -23,11 +24,17 @@ class ViewProductResponse implements Response
     }
 
     /**
-     * @return object
+     * @return array|object
      * @throws \JsonMapper_Exception
      */
     public function toModel()
     {
-        return (new \JsonMapper())->map($this->objectResult, new Product());
+        $result = JsonArtisan::jsonMapAndTimestamps(
+            [$this->objectResult],
+            Product::class,
+            ['updatedAt']
+        );
+
+        return $result;
     }
 }
