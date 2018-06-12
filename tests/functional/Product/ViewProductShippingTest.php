@@ -5,7 +5,7 @@ namespace Product;
 use Pilulka\CoreApiClient\Command\Product\ViewProductShipping;
 use Pilulka\CoreApiClient\JsonApiClient;
 
-class ViewProductTest extends \Codeception\Test\Unit
+class ViewProductShippingTest extends \Codeception\Test\Unit
 {
 
     protected function _before()
@@ -16,10 +16,11 @@ class ViewProductTest extends \Codeception\Test\Unit
     {
     }
 
-    /*
+    /**
      * @group Product
+     * @throws \Exception
      */
-    public function testViewProductShippiong(): void
+    public function testViewProductShipping(): void
     {
         $id = 1;
 
