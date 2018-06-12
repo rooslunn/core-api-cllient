@@ -22,11 +22,11 @@ class ViewProductShippingTest extends \Codeception\Test\Unit
      */
     public function testViewProductShipping(): void
     {
-        $id = 1;
+        $ids = [1, 10];
 
         $response = (new JsonApiClient(CORE_API_URL_BASE))
-            ->send(new ViewProductShipping($id));
+            ->send(new ViewProductShipping($ids));
 
-        $this->assertFalse($response->is_pilulka_car);
+        $this->assertFalse($response[0]->is_pilulka_car);
     }
 }
