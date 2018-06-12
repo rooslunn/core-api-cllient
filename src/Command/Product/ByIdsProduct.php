@@ -8,7 +8,7 @@ use Pilulka\CoreApiClient\Request\{Http, Request};
 
 class ByIdsProduct implements Request
 {
-    private const URI = '/product/byids?';
+    private const URI = '/products?';
 
     /** @var array */
     private $ids;
