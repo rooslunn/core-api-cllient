@@ -35,6 +35,6 @@ class ViewProductResponse implements Response
             ['updatedAt']
         );
 
-        return $result;
+        return $result[0];
     }
 }
