@@ -25,15 +25,19 @@ class JsonArtisan
     /**
      * @param iterable $items
      * @param string $toClass
+     * @param callable|null $customMapper
      * @return array
      * @throws \JsonMapper_Exception
      */
-    public static function jsonMap(iterable $items, string $toClass): array
+    public static function jsonMap(iterable $items, string $toClass, callable $customMapper = null): array
     {
         $result = [];
         $mapper = new \JsonMapper();
 
         foreach ($items ?? [] as $item) {
+            if ($customMapper) {
+                $item = $customMapper($item);
+            }
             $result[] = $mapper->map($item, new $toClass);
         }
 
