@@ -36,7 +36,13 @@ class FilterProductResponse implements Response
         $result = (object) $this->objectResult;
         $result->result = $this->result();
 
-        $result->product = JsonArtisan::jsonMap($result->product, Product::class);
+        $products = JsonArtisan::jsonMapAndTimestamps(
+            $result->product,
+            Product::class,
+            ['updatedAt']
+        );
+
+        $result->product = $products;
         $result->brand = JsonArtisan::jsonMap($result->brand, Brand::class);
         $result->category = JsonArtisan::jsonMap($result->category, Category::class);
         $result->manufacturer = JsonArtisan::jsonMap($result->manufacturer, Manufacturer::class);
