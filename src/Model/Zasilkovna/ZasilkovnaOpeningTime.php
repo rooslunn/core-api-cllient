@@ -157,10 +157,12 @@ class ZasilkovnaOpeningTime
 
     /**
      * @param string $breakTime
+     * @return ZasilkovnaOpeningTime
      */
     public function setBreakTime(string $breakTime)
     {
         $this->breakTime = $breakTime;
+        return $this;
     }
 
 }
