@@ -31,7 +31,14 @@ class SimilarProductResponse implements Response
     {
         $result = new \stdClass();
         $result->result = $this->result();
-        $result->products = JsonArtisan::jsonMap($this->objectResult->products, Product::class);
+        $products = JsonArtisan::jsonMapAndTimestamps(
+            $this->objectResult->products,
+            Product::class,
+            ['updatedAt']
+        );
+
+        $result->products = $products;
+
         return $result;
     }
 }
