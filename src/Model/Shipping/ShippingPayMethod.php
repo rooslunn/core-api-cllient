@@ -130,5 +130,5 @@ class ShippingPayMethod
         $this->description = $description;
         return $this;
     }
-    
+
 }
