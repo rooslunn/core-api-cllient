@@ -37,7 +37,7 @@ class ViewZasilkovnaListResponse implements Response
     public function toModel()
     {
         $result = (object) $this->objectResult;
-        $result->zasilkovna = JsonArtisan::jsonMap($result->zasilkovna, Zasilkovna::class);
+        $result->zasilkovna = JsonArtisan::jsonMapAndTimestamps($result->zasilkovna, Zasilkovna::class, ['createdAt', 'updatedAt']);
         return $result;
     }
 }

@@ -25,18 +25,41 @@ class JsonArtisan
     /**
      * @param iterable $items
      * @param string $toClass
+     * @param callable|null $customMapper
      * @return array
      * @throws \JsonMapper_Exception
      */
-    public static function jsonMap(iterable $items, string $toClass): array
+    public static function jsonMap(iterable $items, string $toClass, callable $customMapper = null): array
     {
         $result = [];
         $mapper = new \JsonMapper();
 
         foreach ($items ?? [] as $item) {
+            if ($customMapper) {
+                $item = $customMapper($item);
+            }
             $result[] = $mapper->map($item, new $toClass);
         }
 
         return $result;
+    }
+
+    /**
+     * @param iterable $items
+     * @param string $toClass
+     * @param array $dateFields
+     * @return array
+     * @throws \JsonMapper_Exception
+     */
+    public static function jsonMapAndTimestamps(array $items, string $toClass, array $dateFields = []): array
+    {
+        return self::jsonMap($items, $toClass, function ($item) use ($dateFields) {
+            foreach ($dateFields as $field) {
+                if (isset($item->{$field}) && ! $item->{$field} instanceof \DateTime) {
+                    $item->{$field} = (new \DateTime)->setTimestamp($item->{$field});
+                }
+            }
+            return $item;
+        });
     }
 }

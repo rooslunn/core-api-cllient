@@ -31,10 +31,12 @@ class ZasilkovnaOpeningTime
 
     /**
      * @param string $monday
+     * @return ZasilkovnaOpeningTime
      */
     public function setMonday(string $monday)
     {
         $this->monday = $monday;
+        return $this;
     }
 
     /**
@@ -47,10 +49,12 @@ class ZasilkovnaOpeningTime
 
     /**
      * @param string $tuesday
+     * @return ZasilkovnaOpeningTime
      */
     public function setTuesday(string $tuesday)
     {
         $this->tuesday = $tuesday;
+        return $this;
     }
 
     /**
@@ -63,10 +67,12 @@ class ZasilkovnaOpeningTime
 
     /**
      * @param string $wednesday
+     * @return ZasilkovnaOpeningTime
      */
     public function setWednesday(string $wednesday)
     {
         $this->wednesday = $wednesday;
+        return $this;
     }
 
     /**
@@ -79,10 +85,12 @@ class ZasilkovnaOpeningTime
 
     /**
      * @param string $thursday
+     * @return ZasilkovnaOpeningTime
      */
     public function setThursday(string $thursday)
     {
         $this->thursday = $thursday;
+        return $this;
     }
 
     /**
@@ -95,10 +103,12 @@ class ZasilkovnaOpeningTime
 
     /**
      * @param string $friday
+     * @return ZasilkovnaOpeningTime
      */
     public function setFriday(string $friday)
     {
         $this->friday = $friday;
+        return $this;
     }
 
     /**
@@ -111,10 +121,12 @@ class ZasilkovnaOpeningTime
 
     /**
      * @param string $saturday
+     * @return ZasilkovnaOpeningTime
      */
     public function setSaturday(string $saturday)
     {
         $this->saturday = $saturday;
+        return $this;
     }
 
     /**
@@ -127,10 +139,12 @@ class ZasilkovnaOpeningTime
 
     /**
      * @param string $sunday
+     * @return ZasilkovnaOpeningTime
      */
     public function setSunday(string $sunday)
     {
         $this->sunday = $sunday;
+        return $this;
     }
 
     /**
@@ -143,10 +157,12 @@ class ZasilkovnaOpeningTime
 
     /**
      * @param string $breakTime
+     * @return ZasilkovnaOpeningTime
      */
     public function setBreakTime(string $breakTime)
     {
         $this->breakTime = $breakTime;
+        return $this;
     }
 
 }

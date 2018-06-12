@@ -35,8 +35,5 @@ class ViewZasilkovnaTest extends Unit
             ->send(new ViewZasilkovna($id));
 
         $this->assertInstanceOf(Zasilkovna::class, $response);
-        $this->assertInstanceOf(Location::class, $response->getLocation());
-        $this->assertInstanceOf(ZasilkovnaOpeningHours::class, $response->getOpeningHours());
-        $this->assertInstanceOf(ZasilkovnaOpeningTime::class, $response->getOpeningTime());
     }
 }
