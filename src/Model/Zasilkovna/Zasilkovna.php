@@ -26,8 +26,6 @@ class Zasilkovna
     private $country;
     /** @var string */
     private $currency;
-    /** @var bool */
-    private $wheelchairAccessible;
     /** @var Location */
     private $location;
     /** @var string */
@@ -231,24 +229,6 @@ class Zasilkovna
     public function setCurrency(string $currency): Zasilkovna
     {
         $this->currency = $currency;
-        return $this;
-    }
-
-    /**
-     * @return bool|null
-     */
-    public function isWheelchairAccessible(): ?bool
-    {
-        return $this->wheelchairAccessible;
-    }
-
-    /**
-     * @param bool $wheelchairAccessible
-     * @return Zasilkovna
-     */
-    public function setIsWheelchairAccessible(?bool $wheelchairAccessible): Zasilkovna
-    {
-        $this->wheelchairAccessible = $wheelchairAccessible;
         return $this;
     }
 

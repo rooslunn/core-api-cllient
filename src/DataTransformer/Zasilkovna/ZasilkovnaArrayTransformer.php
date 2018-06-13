@@ -49,7 +49,6 @@ class ZasilkovnaArrayTransformer implements DataTransformer
             'zip' => $this->zasilkovna->getZip(),
             'country' => $this->zasilkovna->getCountry(),
             'currency' => $this->zasilkovna->getCurrency(),
-            'isWheelchairAccessible' => $this->zasilkovna->isWheelchairAccessible(),
             'location' => [
                 'lat' => $this->zasilkovna->getLocation()->getLat(),
                 'lon' => $this->zasilkovna->getLocation()->getLon()

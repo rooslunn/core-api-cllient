@@ -31,7 +31,6 @@ class ZasilkovnaUtility
         $zasilkovna->setZip('');
         $zasilkovna->setCountry('');
         $zasilkovna->setCurrency('');
-        $zasilkovna->setIsWheelchairAccessible(true);
         $zasilkovna->setLocation((new Location())->setLat(23222.3)->setLon(23223.3));
         $zasilkovna->setUrl('');
         $zasilkovna->setDressingRoom(1);
