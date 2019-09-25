@@ -17,6 +17,7 @@ class JsonApiClient
 {
     /** @var string */
     private $urlBase;
+    private $temp;
 
     public function __construct(string $urlBase)
     {
